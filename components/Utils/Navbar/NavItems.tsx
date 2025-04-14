@@ -17,7 +17,16 @@ const NavItems = () => {
 };
 
 const NavItem: React.FC<NavItemStruct> = ({ title, route }) => {
-  return <div className="text-newGrey text-xl cursor-pointer">{title}</div>;
+  return (
+    <div
+      className="text-newGrey text-xl cursor-pointer"
+      onClick={() => {
+        console.log(route);
+      }}
+    >
+      {title}
+    </div>
+  );
 };
 
 export default NavItems;
