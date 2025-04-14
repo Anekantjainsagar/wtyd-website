@@ -1,6 +1,6 @@
 import React from "react";
-import LandingSection from "@/Sections/Home/LandingSection";
-import CompaniesSection from "@/Sections/Home/CompaniesSection";
+import LandingSection from "@/sections/Home/LandingSection";
+import CompaniesSection from "@/sections/Home/CompaniesSection";
 
 const Home = () => {
   return (
