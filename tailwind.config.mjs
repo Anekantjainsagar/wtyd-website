@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./sections/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -10,6 +11,8 @@ module.exports = {
       colors: {
         newBlue: "#0043C0",
         newGreen: "#2FAE44",
+        newGrey: "#464838",
+        newYellow: "#F7A232",
       },
     },
     screens: {
