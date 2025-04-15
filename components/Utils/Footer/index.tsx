@@ -72,7 +72,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-[#FAF8FF] mt-[14vw] py-[4vw] mx-auto px-[3vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[8vw] text-gray-600 relative">
+    <div className="bg-[#FAF8FF] mt-[18vw] py-[4vw] mx-auto px-[3vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[8vw] text-gray-600 relative">
       <CTA />
       {sections.map((section, index) => (
         <div key={index}>
