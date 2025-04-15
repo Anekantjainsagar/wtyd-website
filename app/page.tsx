@@ -9,6 +9,7 @@ import GlobalITServices from "@/sections/Home/GlobalITServices";
 import InsightNumbers, { CounterItem } from "@/sections/Home/InsightNumbers";
 import Feedback from "@/sections/Home/Feedback";
 import Approach from "@/sections/Home/Approach";
+import Blogs from "@/sections/Home/Blogs";
 
 const counters: CounterItem[] = [
   { endValue: 4000, label: "Total courses" },
@@ -35,6 +36,7 @@ const Home = () => {
       <InsightNumbers counters={counters} />
       <SoftSolutions />
       <Courses courses={coursesData} />
+      <Blogs />
       <Approach />
       <Feedback />
     </div>
