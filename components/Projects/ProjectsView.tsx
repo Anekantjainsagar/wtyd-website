@@ -3,6 +3,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const projectData = [
   {
@@ -75,9 +76,12 @@ const ProjectsView = () => {
 
             <div className="p-4">
               <div className="flex gap-3 mb-[1.5vw]">
-                <button className="text-white px-9 py-1.5 rounded-full text-lg font-medium bg-newBlue transition">
-                  Explore
-                </button>
+                <Link href={"/projects/1"}>
+                  {" "}
+                  <button className="text-white px-9 py-1.5 rounded-full text-lg font-medium bg-newBlue transition">
+                    Explore
+                  </button>
+                </Link>
                 <button className="border border-newBlue text-newBlue px-9 py-1.5 rounded-full text-lg font-medium hover:bg-blue-50 transition">
                   Join now
                 </button>
