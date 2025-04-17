@@ -53,7 +53,7 @@ const NvidiaGTCSummary = () => {
   return (
     <div className="w-7/12 mx-auto py-4 mb-[3vw]">
       <p className="text-xl text-gray-700 mb-6">
-        At NVIDIA's GTC 2025 conference, CEO Jensen Huang unveiled a
+        At NVIDIA&apos;s GTC 2025 conference, CEO Jensen Huang unveiled a
         comprehensive vision for the future of artificial intelligence,
         emphasizing advancements in hardware, software, and AI applications
         across various industries. Here are the key highlights:

@@ -23,7 +23,7 @@ const RecentBlog = () => {
           </h3>
           <p className="text-newGrey text-xl mb-6 tracking-wide">
             Nvidia GTC 2025 was packed with significant announcements and
-            showcased the company's continued dominance in the AI hardware
+            showcased the company&apos;s continued dominance in the AI hardware
             space. However, the event also highlighted potential challenges and
             shifts in the competitive landscape.
           </p>
