@@ -4,7 +4,7 @@ const teamMembers = [
   {
     name: "Noopur Makhija",
     role: "Content Head",
-    image: "/assets/members/people.png",
+    image: "/assets/members/Nopur.png",
     desc: "Creative writer having working experience of more than 12 years in content development.",
     social: {
       facebook: "/",
