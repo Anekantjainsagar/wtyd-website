@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import InputField from "@/components/Login/InputField";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,6 +18,8 @@ const RegisterSchema = Yup.object().shape({
 });
 
 export default function RegisterPage() {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const router = useRouter();
 
@@ -31,13 +33,16 @@ export default function RegisterPage() {
     validateOnBlur: true,
     validateOnChange: true,
     onSubmit: async (values) => {
+      setLoading(true);
       const res = await register(values.name, values.email, values.password);
       if (res.success) {
         toast.success("Registered successful!");
         router.push("/user/dashboard");
       } else {
+        setError(res.message);
         toast.error(res.message || "Registraion failed.");
       }
+      setLoading(false);
     },
   });
 
