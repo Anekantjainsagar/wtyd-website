@@ -1,11 +1,9 @@
 "use client";
 import Link from "next/link";
-import useAuthCheck from "@/utils/auth";
 import Image from "next/image";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 const Signup = () => {
-  let isAuthenticated = false;
+  const isAuthenticated = false;
   // const { isAuthenticated } = useAuthCheck();
 
   return isAuthenticated ? (
