@@ -2,10 +2,10 @@ import MemberBlock from "@/components/Teams/MemberBlock";
 
 const teamMembers = [
   {
-    name: "ABC Sharma",
-    role: "Project Head",
-    image: "/assets/members/people.png",
-    desc: "A blend of creativity, code, and commitment.",
+    name: "Noopur Makhija",
+    role: "Content Head",
+    image: "/assets/members/Nopur.png",
+    desc: "Creative writer having working experience of more than 12 years in content development.",
     social: {
       facebook: "/",
       linkedin: "/",
