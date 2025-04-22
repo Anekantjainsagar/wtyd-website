@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import React from "react";
-
 const LandingSection = () => {
   return (
     <div className="h-[100vh] flex items-center justify-between bg-newBlue w-full px-[3vw]">

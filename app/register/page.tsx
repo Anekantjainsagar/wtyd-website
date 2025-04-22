@@ -1,16 +1,64 @@
 "use client";
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import InputField from "@/components/Login/InputField";
 import Image from "next/image";
 import Link from "next/link";
-import InputField from "@/components/Login/InputField";
+import { useAuth } from "@/context/AuthContext";
+
+const RegisterSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  name: Yup.string().required("Required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Required"),
+});
 
 export default function RegisterPage() {
+  const { register } = useAuth();
+  const router = useRouter();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      name: "",
+      password: "",
+    },
+    validationSchema: RegisterSchema,
+    validateOnBlur: true,
+    validateOnChange: true,
+    onSubmit: async (values) => {
+      const res = await register(values.name, values.email, values.password);
+      if (res.success) {
+        toast.success("Registered successful!");
+        router.push("/user/dashboard");
+      } else {
+        toast.error(res.message || "Registraion failed.");
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (formik?.errors?.name && formik?.errors?.name != "Required") {
+      toast.error(formik.errors.name);
+    }
+    if (formik?.errors?.email && formik?.errors?.email != "Required") {
+      toast.error(formik.errors.email);
+    }
+    if (formik?.errors?.password && formik?.errors?.password != "Required") {
+      toast.error(formik.errors.password);
+    }
+  }, [formik.errors, formik.touched]);
+
   return (
     <div className="h-[100vh] flex-col lg:flex-row bg-newBlue flex items-center justify-center">
       {/* Left */}
       <div className="lg:w-1/2 h-full flex items-center justify-center">
         <Image
-          src="/assets/login.png" // ← keep your current image or update if needed
+          src="/assets/login.png"
           alt="Register Illustration"
           width={10000}
           height={10000}
@@ -27,25 +75,52 @@ export default function RegisterPage() {
           Register and get started
         </p>
 
-        <form className="w-full mt-[3vw]">
+        {error && (
+          <div className="w-full mb-4 p-2 bg-red-100 text-red-700 rounded">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={formik.handleSubmit} className="w-full mt-[3vw]">
           <InputField
             label="Email address"
             type="email"
+            name="email"
             placeholder="Enter your Email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.email && formik.errors.email}
           />
           <InputField
             label="Full Name"
             type="text"
+            name="name"
             placeholder="Enter your Name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && formik.errors.name}
           />
           <InputField
             label="Password"
             type="password"
+            name="password"
             placeholder="Enter your password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && formik.errors.password}
           />
 
-          <button className="w-full text-lg bg-newBlue text-white py-3 rounded-md font-semibold mt-2">
-            Signup
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full text-lg bg-newBlue text-white py-3 rounded-md font-semibold mt-2 ${
+              loading ? "opacity-70 cursor-not-allowed" : ""
+            }`}
+          >
+            {loading ? "Signing up..." : "Signup"}
           </button>
 
           <div className="my-10 border-t border-gray-300" />

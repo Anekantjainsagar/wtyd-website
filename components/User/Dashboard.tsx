@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
-import React from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { GoPencil } from "react-icons/go";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const Dashboard = () => {
+  const router = useRouter();
+  const { user, logout } = useAuth();
+
   return (
     <div className="bg-[#FAF8FF] py-[9vw] px-[3vw] h-[100vh]">
       <div className="h-[75vh] rounded-3xl shadow-xl shadow-gray-200 relative overflow-hidden">
@@ -23,9 +29,16 @@ const Dashboard = () => {
             className="w-[20vw] h-[20vw] object-cover object-top rounded-full absolute left-8 top-1/2 -translate-y-1/2"
           />
           <h1 className="text-white font-bold text-6xl absolute left-[23vw] top-[37%]">
-            Hii Anekant Jain
+            Hii {user?.name}
           </h1>
-          <button className="flex items-center bg-white text-newBlue px-10 py-2.5 text-xl gap-x-3 font-semibold rounded-full absolute right-6 top-6">
+          <button
+            onClick={() => {
+              logout();
+              toast.success("Logout Successfully");
+              router.push("/");
+            }}
+            className="flex items-center bg-white text-newBlue px-10 py-2.5 text-xl gap-x-3 font-semibold rounded-full absolute right-6 top-6"
+          >
             <IoIosLogOut className="text-2xl mt-0.5" />
             LOG OUT
           </button>
