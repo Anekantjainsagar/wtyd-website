@@ -1,12 +1,11 @@
 "use client";
-import { BASE_URL } from "@/Utils/urls";
+import API_URI from "@/utils/url";
 import axios from "axios";
-import { getCookie } from "cookies-next";
+import { getCookie } from "@/utils/cookies";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import image from "@/(main)/Assets/dashboard-user-image.jpeg";
 import toast, { Toaster } from "react-hot-toast";
 
 const Users = () => {
@@ -22,7 +21,7 @@ const Users = () => {
 
   const getUsers = () => {
     axios
-      .post(`${BASE_URL}/user/get-partners`)
+      .post(`$API_URI/user/get-partners`)
       .then((response) => {
         setUsersData(response.data);
       })
@@ -104,11 +103,6 @@ const Product = ({ data, getUsers }) => {
   return (
     <div className="rounded-md grid grid-cols-3 items-center mb-3 cursor-pointer shadow-sm shadow-gray-200 p-2">
       <div className="flex items-center">
-        <Image
-          src={image}
-          alt="Image"
-          className="w-[5vw] rounded-full object-cover object-center"
-        />
         <div className="py-1 ml-3">
           <p className="font-bold text-[16px]">{data?.name}</p>
           <div className="flex flex-col items-start">
@@ -133,7 +127,7 @@ const Product = ({ data, getUsers }) => {
           size={35}
           onClick={(e) => {
             axios
-              .post(`${BASE_URL}/user/delete-partner/${data?._id}`)
+              .post(`$API_URI/user/delete-partner/${data?._id}`)
               .then((res) => {
                 if (res.status === 200 && res.data.deletedCount > 0) {
                   getUsers();

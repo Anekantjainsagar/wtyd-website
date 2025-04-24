@@ -1,13 +1,11 @@
 "use client";
 import React, { useContext, useRef, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import axios from "axios";
-import { BASE_URL } from "@/Utils/urls";
+import API_URI from "@/utils/url";
 import { useRouter } from "next/navigation";
 import { Editor } from "@tinymce/tinymce-react";
-import Context from "@/Context/Context";
 
 const AddBlog = () => {
   const history = useRouter();
@@ -16,12 +14,12 @@ const AddBlog = () => {
     title: "",
   });
   const [image, setImage] = useState("");
-  const { getBlogs, blogs } = useContext(Context);
+  const { getBlogs, blogs } = { getBlogs: () => {}, blogs: [] };
 
   const saveBlog = () => {
     if (product?.title && image && editorRef.current.getContent()) {
       axios
-        .post(`${BASE_URL}/admin/add-blog`, {
+        .post(`$API_URI/admin/add-blog`, {
           image,
           title: product?.title,
           description: editorRef.current.getContent(),
