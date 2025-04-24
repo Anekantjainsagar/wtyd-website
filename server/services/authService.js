@@ -12,7 +12,7 @@ const registerUser = async (userData) => {
   const user = await User.create(userData);
 
   // Generate token
-  const token = generateToken(user._id);
+  const token = generateToken(user._id, user.role);
 
   return { user, token };
 };
@@ -31,7 +31,7 @@ const loginUser = async (email, password) => {
   }
 
   // Generate token
-  const token = generateToken(user._id);
+  const token = generateToken(user._id, user.role);
 
   return { user, token };
 };

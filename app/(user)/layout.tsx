@@ -1,7 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Utils/Navbar";
 import StoreProvider from "@/store/store-provider";
 import Footer from "@/components/Utils/Footer";

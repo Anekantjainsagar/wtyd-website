@@ -1,14 +1,44 @@
-// context/AuthContext.js
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { setCookie, getCookie, deleteCookie } from "@/utils/cookies";
 import axios from "axios";
 import API_URI from "@/utils/url";
+import { usePathname } from "next/navigation";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const pathname = usePathname();
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const getMe = async () => {
+    const token = getCookie("token");
+    if (!token) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await axios.get(`${API_URI}/api/v1/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.data.success) {
+        setUser(res.data.data);
+      }
+    } catch (err) {
+      console.error(
+        "Auth Check Failed:",
+        err.response?.data?.message || err.message
+      );
+      logout(); // If token is invalid
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const login = async (email, password) => {
     try {
@@ -19,7 +49,7 @@ export const AuthProvider = ({ children }) => {
 
       if (res.data.success) {
         const { data: userData, token } = res.data;
-        setCookie("token", token, 30); // 30 day
+        setCookie("token", token, 30);
         setUser(userData);
         return { success: true };
       }
@@ -34,7 +64,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const res = await axios.post(`${API_URI}/api/v1/auth/login`, {
+      const res = await axios.post(`${API_URI}/api/v1/auth/register`, {
         name,
         email,
         password,
@@ -42,9 +72,9 @@ export const AuthProvider = ({ children }) => {
 
       if (res.data.success) {
         const { data: userData, token } = res.data;
-        setCookie("token", token, 30); // 30 day
+        setCookie("token", token, 30);
         setUser(userData);
-        return { success: true };
+        return { success: true, role: userData?.role };
       }
     } catch (err) {
       console.error(
@@ -60,12 +90,17 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     deleteCookie("token");
-    deleteCookie("user");
     setUser(null);
   };
 
+  useEffect(() => {
+    getMe(); // On initial load
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, register }}>
+    <AuthContext.Provider
+      value={{ user, loading, login, logout, register, getMe }}
+    >
       {children}
     </AuthContext.Provider>
   );

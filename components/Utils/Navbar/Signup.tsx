@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useAuth } from "@/context/AuthContext";
 
 const Signup = () => {
-  const isAuthenticated = false;
-  // const { isAuthenticated } = useAuthCheck();
+  const { user } = useAuth();
 
-  return isAuthenticated ? (
+  return user?._id && user?.role == "user" ? (
     <Link href="/user/dashboard">
       <Image
         src="/assets/members/people.png"

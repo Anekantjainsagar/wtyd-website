@@ -59,21 +59,21 @@ const Dashboard = () => {
                 height={1000}
                 src="/assets/social-icons/facebook.png"
                 alt="Facebook Icon"
-                className="w-[2.25vw] cursor-pointer"
+                className="w-[2vw] cursor-pointer"
               />
               <Image
                 width={1000}
                 height={1000}
                 src="/assets/social-icons/linkedin.png"
                 alt="Linkedin Icon"
-                className="w-[2.25vw] cursor-pointer"
+                className="w-[2vw] cursor-pointer"
               />
               <Image
                 width={1000}
                 height={1000}
                 src="/assets/social-icons/github.png"
                 alt="Github Icon"
-                className="w-[2.25vw] cursor-pointer"
+                className="w-[2vw] cursor-pointer"
               />
             </div>
           </div>
