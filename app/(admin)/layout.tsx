@@ -5,6 +5,8 @@ import Sidebar from "./Components/Sidebar";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
+import { AdminProvider } from "@/context/AdminContext";
+import { ConfirmProvider } from "@/app/(admin)/Components/Utils/ConfirmProvier";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,12 +35,16 @@ export default function RootLayout({
       >
         <div className="w-full h-full flex items-start">
           <AuthProvider>
-            <Toaster />
-            <Sidebar />
-            <div className="w-[85vw]">
-              <Navbar />
-              <div className="p-4">{children}</div>
-            </div>
+            <AdminProvider>
+              <ConfirmProvider>
+                <Toaster />
+                <Sidebar />
+                <div className="w-[85vw]">
+                  <Navbar />
+                  <div className="p-4">{children}</div>
+                </div>
+              </ConfirmProvider>
+            </AdminProvider>
           </AuthProvider>
         </div>
       </body>

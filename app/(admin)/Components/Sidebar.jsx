@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
 import Image from "next/image";
-import { RiDashboardLine } from "react-icons/ri";
-import { CiLogout, CiUser } from "react-icons/ci";
-import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
-import { usePathname, useRouter } from "next/navigation";
-import { FaBlogger, FaCircleNotch } from "react-icons/fa";
+import React, { useState } from "react";
 import { FaUserGroup } from "react-icons/fa6";
 import { useAuth } from "@/context/AuthContext";
+import { RiDashboardLine } from "react-icons/ri";
+import { CiLogout, CiUser } from "react-icons/ci";
+import { usePathname, useRouter } from "next/navigation";
+import { FaBlogger, FaCircleNotch } from "react-icons/fa";
+import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
 
 const Sidebar = () => {
   const { logout } = useAuth();
@@ -59,11 +59,11 @@ const Sidebar = () => {
           return <NavItem e={e} key={i} />;
         })}
         <div
-          onClick={(event) => {
+          onClick={() => {
             logout();
             history.push("/");
           }}
-          className={`hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
+          className={`font-medium hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
             pathname == "/logout" ? "text-white bg-gray-700" : "text-gray-400"
           }`}
         >
@@ -91,7 +91,7 @@ const NavItem = ({ e }) => {
           }
           setShowBottom(!showBottom);
         }}
-        className={`font-bold hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
+        className={`font-medium hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
           pathname == e?.route ? "text-white bg-gray-700" : "text-gray-400"
         }`}
       >

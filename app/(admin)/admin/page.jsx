@@ -15,20 +15,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import Admin from "../Components/Graphs";
+import UserReport from "../Components/UserReport";
 
 const AdminPage = () => {
   const { productM } = { productM: [] };
 
-  // useEffect(() => {
-  //   if (!getCookie("admin_token")) {
-  //     history.push("/user/login");
-  //   }
-  // }, [history]);
-
   return (
     <div className="bg-gray-100 p-4 h-[90vh] overflow-y-auto">
-      <Admin />
+      <UserReport />
       <div className="bg-white border rounded-md pt-4 shadow-md shadow-gray-200">
         <p className="text-black font-bold px-4 border-b pb-2">
           All Products ({productM?.productData?.length})

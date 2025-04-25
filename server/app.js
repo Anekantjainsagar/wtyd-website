@@ -11,6 +11,7 @@ const connectDB = require("./config/db");
 // Import routes
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/Admin/adminRoutes");
 
 // Import middleware
 const errorHandler = require("./middlewares/errorMiddleware");
@@ -53,6 +54,7 @@ app.use(passport.initialize());
 // 3. ROUTES
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/admin", adminRoutes);
 
 // Health check endpoint
 app.get("/api/v1/health", (req, res) => {
