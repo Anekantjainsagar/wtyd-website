@@ -1,10 +1,9 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
-import { setCookie, getCookie, deleteCookie } from "@/utils/cookies";
 import axios from "axios";
 import API_URI from "@/utils/url";
-import { usePathname } from "next/navigation";
 import toast from "react-hot-toast";
+import { getCookie } from "@/utils/cookies";
+import { createContext, useEffect, useState } from "react";
 
 const AdminContext = createContext();
 

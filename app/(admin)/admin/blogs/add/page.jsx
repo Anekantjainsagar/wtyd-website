@@ -19,10 +19,10 @@ const AddBlog = () => {
   const saveBlog = () => {
     if (product?.title && image && editorRef.current.getContent()) {
       axios
-        .post(`$API_URI/admin/add-blog`, {
-          image,
+        .post(`${API_URI}/api/v1/admin/blogs/add`, {
+          coverImage: image,
           title: product?.title,
-          description: editorRef.current.getContent(),
+          content: editorRef.current.getContent(),
         })
         .then((res) => {
           if (res.status === 200) {
@@ -39,12 +39,12 @@ const AddBlog = () => {
   };
 
   return (
-    <div className="h-[82vh] overflow-y-auto">
+    <div className="h-[90vh] overflow-y-auto">
       <Toaster />
-      <h1 className="text-xl font-bold mb-2 cursor-pointer gradientHover w-fit text-newBlue">
+      <h1 className="text-3xl font-bold mb-4 cursor-pointer gradientHover w-fit text-newBlue">
         Add New Blog
       </h1>
-      <div className="px-3">
+      <div className="px-2">
         <input
           type="text"
           value={product?.title}

@@ -5,7 +5,6 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
-const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 
 // Import routes

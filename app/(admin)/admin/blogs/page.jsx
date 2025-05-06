@@ -8,42 +8,41 @@ import toast, { Toaster } from "react-hot-toast";
 import API_URI from "@/utils/url";
 import axios from "axios";
 import Link from "next/link";
+import Select from "../../Components/Utils/Select";
+import AdminContext from "@/context/AdminContext";
+import { IoReload } from "react-icons/io5";
 
 const Blogs = () => {
+  const [spinning, setSpinning] = useState(false);
+  const { getBlogs } = useContext(AdminContext);
   const [sortStore, setSortStore] = useState("Sort By");
   const { blogs } = { blogs: [] };
-  const history = useRouter();
 
-  useEffect(() => {
-    if (!getCookie("admin_token")) {
-      history.push("/user/login");
-    }
-  }, [history]);
+  const handleReload = async () => {
+    setSpinning(true);
+    await getBlogs();
+    setTimeout(() => setSpinning(false), 500);
+  };
 
   return (
     <div className="bg-gray-100">
       <Toaster />
       <div className="bg-white border rounded-md pt-4 overflow-y-auto h-[82vh] shadow-md shadow-gray-200">
         <div className="text-black flex items-center justify-between px-4 border-b pb-2">
-          <p className="font-bold">All Blogs ({blogs?.length})</p>
-          <div>
-            <select
+          <p className="font-bold text-2xl">All Blogs ({blogs?.length})</p>
+          <div className="gap-x-4 flex items-center">
+            <IoReload
+              title="Refresh Data"
+              className={`text-xl cursor-pointer transition-transform ${
+                spinning ? "animate-spin" : ""
+              }`}
+              onClick={handleReload}
+            />
+            <Select
               value={sortStore}
-              onChange={(e) => {
-                setSortStore(e.target.value);
-              }}
-              className="w-full md:w-[13vw] rounded-sm text-darkGrey text-sm border px-2 py-2 outline-none"
-            >
-              {["Sort By", "Newest", "Oldest", "Ascending", "Descending"].map(
-                (e, i) => {
-                  return (
-                    <option value={e} key={i}>
-                      {e}
-                    </option>
-                  );
-                }
-              )}
-            </select>
+              onChange={(e) => setSortStore(e.target.value)}
+              options={["Sort By", "Ascending", "Descending"]}
+            />
           </div>
         </div>
         <div className="px-2 pt-2">
