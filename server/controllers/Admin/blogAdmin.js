@@ -32,7 +32,7 @@ const addBlog = async (req, res, next) => {
   try {
     const newBlog = await adminBlogService.addBlog({
       ...req.body,
-      author: req.user.id,
+      author: req.user._id,
     });
     res.status(201).json({
       success: true,
@@ -80,7 +80,7 @@ const deleteBlog = async (req, res, next) => {
     });
   }
 
-  const blogId = req.query.id;
+  const blogId = req.params.id;
   if (!blogId) {
     return res.status(400).json({
       success: false,

@@ -3,12 +3,12 @@ import React from "react";
 
 const CompaniesSection = () => {
   return (
-    <div className="flex items-center px-[3vw] justify-between w-full py-7">
-      <p className="text-newGrey w-2/12 text-xl">
+    <div className="flex md:flex-row flex-col md:items-center px-[5vw] md:px-[3vw] justify-between w-full py-8 md:py-7">
+      <p className="text-newGrey md:w-2/12 text-lg md:text-xl">
         Trusted by 100+ company Worldwide
       </p>
-      <div className="h-[90px] w-[1px] bg-newGrey"></div>
-      <div className="flex items-center justify-between w-9/12">
+      <div className="h-[90px] w-[1px] bg-newGrey md:block hidden"></div>
+      <div className="flex items-center justify-between md:w-9/12 md:mt-0 mt-4">
         {[
           "image (1).png",
           "image (2).png",
@@ -25,7 +25,7 @@ const CompaniesSection = () => {
               height={10000}
               alt="Companies Logo"
               src={"/assets/home/01_companies/" + img}
-              className="w-[4.25vw]"
+              className="w-[8vw] md:w-[4.25vw]"
             />
           );
         })}

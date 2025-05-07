@@ -45,7 +45,7 @@ const AnimatedCounter = ({
   const displayValue = count.toLocaleString();
 
   return (
-    <div className="text-center">
+    <div className="text-center md:w-full w-5/12">
       <motion.span
         className="text-3xl md:text-5xl font-semibold text-black"
         initial={{ opacity: 0, scale: 0.5 }}

@@ -11,12 +11,12 @@ import Link from "next/link";
 import Select from "../../Components/Utils/Select";
 import AdminContext from "@/context/AdminContext";
 import { IoReload } from "react-icons/io5";
+import { useConfirm } from "../../Components/Utils/ConfirmProvier";
 
 const Blogs = () => {
   const [spinning, setSpinning] = useState(false);
-  const { getBlogs } = useContext(AdminContext);
+  const { getBlogs, blogs } = useContext(AdminContext);
   const [sortStore, setSortStore] = useState("Sort By");
-  const { blogs } = { blogs: [] };
 
   const handleReload = async () => {
     setSpinning(true);
@@ -27,7 +27,7 @@ const Blogs = () => {
   return (
     <div className="bg-gray-100">
       <Toaster />
-      <div className="bg-white border rounded-md pt-4 overflow-y-auto h-[82vh] shadow-md shadow-gray-200">
+      <div className="bg-white border rounded-md pt-4 overflow-y-auto h-[90vh] shadow-md shadow-gray-200">
         <div className="text-black flex items-center justify-between px-4 border-b pb-2">
           <p className="font-bold text-2xl">All Blogs ({blogs?.length})</p>
           <div className="gap-x-4 flex items-center">
@@ -95,17 +95,35 @@ const Blogs = () => {
 
 const Product = ({ data }) => {
   const history = useRouter();
-  const { getBlogs } = useContext(Context);
+  const { requestConfirm } = useConfirm();
+  const { blogs, setBlogs } = useContext(AdminContext);
 
   function createMarkup() {
-    return { __html: data?.description?.slice(0, 150) + "..." };
+    return { __html: data?.content?.slice(0, 150) + "..." };
   }
+
+  const handleDelete = () => {
+    requestConfirm(`Are you sure you want to delete ${data?.title}?`, () => {
+      axios
+        .delete(`${API_URI}/api/v1/admin/blogs/delete/${data?._id}`, {
+          headers: {
+            Authorization: `Bearer ${getCookie("token")}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            setBlogs(blogs?.filter((blog) => blog?._id != data?._id));
+            toast.success("Deleted successfully");
+          }
+        });
+    });
+  };
 
   return (
     <div className="rounded-md flex items-center justify-between mb-3 cursor-pointer shadow-sm shadow-gray-200 p-2">
       <div className="flex w-[68vw] items-center justify-between">
         <Image
-          src={data?.image}
+          src={data?.coverImage}
           width={100}
           height={100}
           alt="Image"
@@ -130,21 +148,16 @@ const Product = ({ data }) => {
           className="text-blue-500 bg-blue-50 p-2 rounded-full hover:text-white hover:bg-blue-500 transition-all mr-3"
           size={35}
           onClick={(e) => {
-            history.push(`/admin/blogs/${data?._id}`);
+            history.push(
+              `/admin/blogs/${data?.title?.toLowerCase()?.replaceAll(" ", "-")}`
+            );
           }}
         />
         <AiOutlineDelete
           className="text-red-500 bg-red-50 p-2 rounded-full hover:text-white hover:bg-red-500 transition-all mr-3"
           size={35}
           onClick={(e) => {
-            axios
-              .post(`${API_URI}/admin/delete-blog/${data?._id}`)
-              .then((res) => {
-                if (res.status === 200 && res.data.deletedCount > 0) {
-                  getBlogs();
-                  toast.success("Deleted successfully");
-                }
-              });
+            handleDelete(data);
           }}
         />
       </div>

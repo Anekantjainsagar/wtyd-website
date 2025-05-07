@@ -11,8 +11,7 @@ const getAllBlogs = async () => {
 
 // ADD a new blog
 const addBlog = async (blogData) => {
-  const newBlog = new Blog(blogData);
-  const savedBlog = await newBlog.save();
+  const savedBlog = await Blog.create(blogData);
   if (!savedBlog) {
     throw new Error("Blog creation failed");
   }

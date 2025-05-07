@@ -52,8 +52,8 @@ const projectData = [
 
 const ProjectsView = () => {
   return (
-    <div className="p-[3vw] bg-white">
-      <h2 className="text-5xl font-medium mb-6">Our Projects</h2>
+    <div className="px-[5vw] md:px-[3vw] py-[3vw] bg-white">
+      <h2 className="text-3xl md:text-5xl font-medium mb-6">Our Projects</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
         {projectData.map((project, index) => (
@@ -67,7 +67,7 @@ const ProjectsView = () => {
                 alt="Project Image"
                 width={400}
                 height={200}
-                className="w-full h-[35vh] object-cover"
+                className="w-full h-[22vh] md:h-[35vh] object-cover"
               />
               <span className="absolute top-0 left-0 bg-white px-9 py-1.5 rounded-tl-xl rounded-br-xl shadow text-newGrey">
                 {project.tag}
@@ -78,18 +78,18 @@ const ProjectsView = () => {
               <div className="flex gap-3 mb-[1.5vw]">
                 <Link href={"/projects/1"}>
                   {" "}
-                  <button className="text-white px-9 py-1.5 rounded-full text-lg font-medium bg-newBlue transition">
+                  <button className="text-white px-7 md:px-9 py-1 md:py-1.5 rounded-full text-lg font-medium bg-newBlue transition">
                     Explore
                   </button>
                 </Link>
-                <button className="border border-newBlue text-newBlue px-9 py-1.5 rounded-full text-lg font-medium hover:bg-blue-50 transition">
+                <button className="border border-newBlue text-newBlue px-7 md:px-9 py-1 md:py-1.5 rounded-full text-lg font-medium hover:bg-blue-50 transition">
                   Join now
                 </button>
               </div>
-              <h3 className="font-semibold text-2xl text-gray-900">
+              <h3 className="font-semibold text-2xl text-gray-900 md:mt-0 mt-2">
                 {project.title}
               </h3>
-              <p className="text-lg text-newGrey mt-2 pb-[1vw]">
+              <p className="text-lg text-newGrey mt-1 md:mt-2 pb-[1vw]">
                 {project.description}
               </p>
             </div>

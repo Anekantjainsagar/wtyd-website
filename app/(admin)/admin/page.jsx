@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import React, { useContext, useEffect } from "react";
 import {
   Navigation,
   Pagination,

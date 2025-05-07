@@ -1,28 +1,32 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { RootState } from "@/store";
 import { useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
+import { RootState } from "@/store";
 import { NavItemStruct } from "@/store/slices/navSlice";
 
-const NavItems = () => {
+const NavItems = ({ onClickLink = () => {} }) => {
   const data = useSelector((state: RootState) => state.navItems.navItems);
 
   return (
-    <div className="flex items-center gap-x-[5vw]">
-      {data?.map((data, idx) => {
-        return <NavItem {...data} key={idx} />;
-      })}
-    </div>
+    <>
+      {data?.map((item, idx) => (
+        <NavItem {...item} key={idx} onClickLink={onClickLink} />
+      ))}
+    </>
   );
 };
 
-const NavItem: React.FC<NavItemStruct> = ({ title, route }) => {
+const NavItem: React.FC<NavItemStruct & { onClickLink?: () => void }> = ({
+  title,
+  route,
+  onClickLink,
+}) => {
   const pathname = usePathname();
 
   return (
-    <Link href={route}>
+    <Link href={route} onClick={onClickLink}>
       <div
         className={`${
           pathname == route ? "text-newBlue" : "text-newGrey hover:text-newBlue"

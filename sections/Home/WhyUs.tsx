@@ -30,12 +30,12 @@ const WhyUs = () => {
   ];
 
   return (
-    <div className="bg-[#FAF8FF] py-[5vw] px-[3vw]">
+    <div className="bg-[#FAF8FF] py-[10vw] md:py-[5vw] px-[5vw] md:px-[3vw]">
       <div className="mb-8">
-        <h2 className="text-3xl md:text-4xl font-semibold text-newBlue mb-2">
+        <h2 className="text-2xl md:text-4xl font-semibold text-newBlue mb-2">
           Why Choose wtyd?
         </h2>
-        <p className="text-newGrey text-xl mt-2">
+        <p className="text-newGrey md:text-xl mt-1 md:mt-2">
           Your dream tech career starts here - Upgrade your skills today!
         </p>
       </div>
@@ -50,12 +50,12 @@ const WhyUs = () => {
               height={1000}
               src={feature.imageUrl}
               alt={feature.title}
-              className="h-[8vw] w-fit object-contain"
+              className="h-[30vw] md:h-[8vw] w-fit object-contain"
             />
-            <h3 className="text-2xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
               {feature.title}
             </h3>
-            <p className="text-newGrey text-lg">{feature.description}</p>
+            <p className="text-newGrey md:text-lg">{feature.description}</p>
           </div>
         ))}
       </div>

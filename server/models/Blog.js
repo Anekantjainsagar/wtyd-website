@@ -11,7 +11,7 @@ const blogSchema = new mongoose.Schema(
     content: {
       type: String,
       required: [true, "Please add content"],
-      minlength: [50, "Content must be at least 50 characters"],
+      minlength: [10, "Content must be at least 50 characters"],
     },
     coverImage: {
       type: String, // URL to cover image
@@ -28,6 +28,7 @@ const blogSchema = new mongoose.Schema(
     },
     publishedAt: {
       type: Date,
+      default: new Date(Date.now()),
     },
     status: {
       type: String,
