@@ -42,24 +42,24 @@ const Approach = () => {
   ];
 
   return (
-    <div className="py-[4vw] px-[3vw] bg-white">
-      <h2 className="text-5xl font-semibold mb-[2.5vw] text-center">
+    <div className="py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw] bg-white">
+      <h2 className="text-3xl md:text-5xl text-start font-semibold mb-8 md:mb-[2.5vw]">
         Our Approach
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6">
         {approachSteps.map((step, index) => (
           <div
             key={index}
-            className={`${step.bgColor} rounded-lg shadow-md p-5 space-x-6 flex items-center`}
+            className={`${step.bgColor} rounded-lg shadow-md p-3 md:p-5 space-x-6 flex items-start md:items-center`}
           >
-            <div className="bg-newBlue text-6xl w-[18vw] h-[8vw] text-white flex items-center justify-center rounded-md p-3">
+            <div className="bg-newBlue text-6xl w-[20vw] md:w-[18vw] h-[20vw] md:h-[8vw] text-white flex items-center justify-center rounded-md p-3">
               <GoGitBranch />
             </div>
             <div>
-              <h3 className={`text-2xl font-semibold text-black mb-2`}>
+              <h3 className={`text-xl md:text-2xl font-semibold text-black mb-1 md:mb-2`}>
                 {step.title}
               </h3>
-              <p className="text-newGrey text-lg">{step.description}</p>
+              <p className="text-newGrey md:text-lg">{step.description}</p>
             </div>
           </div>
         ))}

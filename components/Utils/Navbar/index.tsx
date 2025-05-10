@@ -20,7 +20,7 @@ const Navbar = () => {
             priority
             src="/assets/logo.png"
             alt="We Tech You Do Logo"
-            className="object-contain w-[20vw] md:w-[10vw] cursor-pointer"
+            className="object-contain w-[22vw] md:w-[10vw] cursor-pointer"
           />
         </Link>
 

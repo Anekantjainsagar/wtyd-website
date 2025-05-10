@@ -72,23 +72,25 @@ const Footer = () => {
   ];
 
   return (
-    <div className="bg-[#FAF8FF] mt-[18vw] py-[4vw] mx-auto px-[3vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[8vw] text-gray-600 relative">
+    <div className="bg-[#FAF8FF] mt-[35vh] md:mt-[18vw] py-[8vw] md:py-[4vw] mx-auto px-[5vw] md:px-[3vw] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[8vw] text-gray-600 relative">
       <CTA />
       {sections.map((section, index) => (
         <div key={index}>
-          <div className="font-semibold text-xl text-newYellow mb-2">
+          <div className="font-semibold md:text-start text-center text-xl text-newYellow mb-2">
             {section.title}
           </div>
           {section.description && (
-            <div className="mb-4 text-lg">{section.description}</div>
+            <div className="mb-4 text-lg md:text-start text-center">
+              {section.description}
+            </div>
           )}
           {section.links && (
             <div>
               {section.links.map((link, linkIndex) => (
-                <div key={linkIndex} className="mb-2">
+                <div key={linkIndex} className="mb-2 md:text-start text-center">
                   <Link
                     href={link.route}
-                    className="hover:text-newYellow text-lg"
+                    className="hover:text-newYellow text-lg md:text-start text-center"
                   >
                     {link.text}
                   </Link>
@@ -97,7 +99,7 @@ const Footer = () => {
             </div>
           )}
           {section.socialLinks && (
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 items-center md:items-start md:justify-start justify-center">
               {section.socialLinks.map((social, socialIndex) => (
                 <Link
                   key={socialIndex}

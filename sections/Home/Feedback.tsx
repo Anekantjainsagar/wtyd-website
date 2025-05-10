@@ -55,8 +55,8 @@ const Feedback = () => {
   ];
 
   return (
-    <div className="bg-[#FAF8FF] py-[4vw] px-[3vw]">
-      <h2 className="text-5xl font-semibold mb-[2vw]">Feedbacks</h2>
+    <div className="bg-[#FAF8FF] py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
+      <h2 className="text-3xl md:text-5xl font-semibold mb-8 md:mb-[2vw]">Feedbacks</h2>
       <Marquee className="my-marquee" pauseOnHover repeat={2} reverse={true}>
         {feedbacks.map((feedback, index) => (
           <FeedbackCard key={index} {...feedback} />

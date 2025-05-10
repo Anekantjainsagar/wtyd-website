@@ -10,15 +10,15 @@ interface CourseItemProps {
 
 export const CourseItem: React.FC<CourseItemProps> = ({ course }) => {
   return (
-    <div className="bg-white rounded-md shadow-lg p-6 flex flex-col items-center justify-center">
+    <div className="bg-white rounded-md shadow-lg p-4 md:p-6 flex flex-col items-center justify-center">
       <Image
         width={1000}
         height={1000}
         src={course.imageSrc}
         alt={course.name}
-        className="w-[5vw] object-contain"
+        className="w-[30vw] md:w-[5vw] object-contain"
       />
-      <h3 className="text-lg font-semibold text-gray-800">{course.name}</h3>
+      <h3 className="text-center md:text-lg font-semibold text-gray-800">{course.name}</h3>
     </div>
   );
 };

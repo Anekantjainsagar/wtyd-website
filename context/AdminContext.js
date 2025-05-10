@@ -18,6 +18,25 @@ export const AdminProvider = ({ children }) => {
   const [monthlyUsersReport, setMonthlyUsersReport] = useState([]);
   const [users, setUsers] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const [projects, setProjects] = useState([]);
+
+  const getProjects = () => {
+    let token = getCookie("token");
+
+    axios
+      .get(`${API_URI}/api/v1/admin/projects/all`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        if (!res.data.success) {
+          toast.error(res.data.error);
+        }
+        setProjects(res.data.data);
+      })
+      .catch((e) => {
+        toast.error(e.response.data.error);
+      });
+  };
 
   const getBlogs = () => {
     let token = getCookie("token");
@@ -131,6 +150,7 @@ export const AdminProvider = ({ children }) => {
   useEffect(() => {
     getAllUsers();
     getBlogs();
+    getProjects();
   }, []);
 
   return (
@@ -147,6 +167,9 @@ export const AdminProvider = ({ children }) => {
         getBlogs,
         blogs,
         setBlogs,
+        projects,
+        setProjects,
+        getProjects,
       }}
     >
       {children}

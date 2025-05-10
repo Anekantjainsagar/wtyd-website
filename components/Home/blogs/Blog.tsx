@@ -12,8 +12,8 @@ const Blog = ({
   description: string;
 }) => {
   return (
-    <div className="flex bg-white rounded-xl shadow-md overflow-hidden p-5">
-      <div className="w-5/12">
+    <div className="flex md:flex-row flex-col bg-white rounded-xl shadow-md overflow-hidden p-3 md:p-5">
+      <div className="md:w-5/12">
         <Image
           src={image}
           alt="Blog"
@@ -22,13 +22,13 @@ const Blog = ({
           className="w-full rounded-xl h-[22vh] object-cover"
         />
       </div>
-      <div className="w-7/12 p-5 flex flex-col justify-between">
+      <div className="md:w-7/12 md:mt-0 mt-4 p-0 md:p-5 flex flex-col justify-between">
         <div>
-          <h3 className="text-3xl font-semibold mb-2">{title}</h3>
-          <p className="text-lg text-gray-600">{description}</p>
+          <h3 className="text-2xl md:text-3xl font-semibold mb-2">{title}</h3>
+          <p className="md:text-lg text-gray-600">{description}</p>
         </div>{" "}
         <Link href={"/blogs/1"}>
-          <button className="mt-4 w-[7vw] bg-newBlue outline-none text-white py-2 rounded-md font-medium text-base">
+          <button className="mt-4 w-full md:w-[7vw] bg-newBlue outline-none text-white py-2 rounded-md font-medium text-base">
             View
           </button>
         </Link>

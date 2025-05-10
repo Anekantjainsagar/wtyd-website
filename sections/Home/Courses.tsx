@@ -57,9 +57,9 @@ const Carousel: React.FC<CarouselProps> = ({
   const handleMouseLeave = () => startAutoScroll();
 
   return (
-    <div className="relative bg-[#FAF8FF] px-[6vw] py-[4vw]">
-      <h1 className="text-5xl font-semibold text-center">Our Courses</h1>
-      <p className="text-2xl text-newGrey mt-2 mb-[2.5vw] text-center">
+    <div className="relative bg-[#FAF8FF] px-[5vw] md:px-[6vw] py-[10vw] md:py-[4vw]">
+      <h1 className="text-3xl md:text-5xl font-semibold text-center">Our Courses</h1>
+      <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] text-center">
         We provide end-to-end software and mobile application development
         services.
       </p>
@@ -93,7 +93,7 @@ const Carousel: React.FC<CarouselProps> = ({
           <button
             onClick={prevSlide}
             disabled={currentIndex === 0}
-            className={`absolute left-[3vw] top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-5 text-xl shadow-md ${
+            className={`absolute left-[2vw] md:left-[3vw] top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-3 md:p-5 text-lg md:text-xl shadow-md ${
               currentIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
@@ -102,7 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({
           <button
             onClick={nextSlide}
             disabled={currentIndex >= courses.length - visibleSlides}
-            className={`absolute right-[3vw] top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-5 text-xl shadow-md ${
+            className={`absolute right-[2vw] md:right-[3vw] top-1/2 transform -translate-y-1/2 bg-blue-600 text-white rounded-full p-3 md:p-5 text-lg md:text-xl shadow-md ${
               currentIndex >= courses.length - visibleSlides
                 ? "opacity-50 cursor-not-allowed"
                 : ""

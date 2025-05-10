@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FaUserGroup } from "react-icons/fa6";
 import { useAuth } from "@/context/AuthContext";
 import { RiDashboardLine } from "react-icons/ri";
+import { GoProjectRoadmap } from "react-icons/go";
 import { CiLogout, CiUser } from "react-icons/ci";
 import { usePathname, useRouter } from "next/navigation";
 import { FaBlogger, FaCircleNotch } from "react-icons/fa";
@@ -35,6 +36,20 @@ const Sidebar = () => {
         {
           name: "Add New Blog",
           route: "/admin/blogs/add",
+        },
+      ],
+    },
+    {
+      name: "Projects",
+      icon: <GoProjectRoadmap size={20} className="mr-2 pb-0.5" />,
+      sub: [
+        {
+          name: "All Projects",
+          route: "/admin/projects",
+        },
+        {
+          name: "Add New Project",
+          route: "/admin/projects/add",
         },
       ],
     },

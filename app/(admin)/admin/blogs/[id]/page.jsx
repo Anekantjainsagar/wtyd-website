@@ -38,12 +38,18 @@ const AddBlog = ({ params }) => {
         description: temp?.content,
         _id: temp?._id,
       });
+      const interval = setInterval(() => {
+        if (editorRef.current) {
+          editorRef.current.setContent(temp?.content || "");
+          clearInterval(interval);
+        }
+      }, 100); // Retry every 100ms until editor is ready
     } else {
       toast.error("Blog not found.");
     }
 
     setLoading(false);
-  }, [id, blogs]);
+  }, [id]);
 
   const saveBlog = () => {
     const editorContent = editorRef.current?.getContent();
@@ -104,7 +110,7 @@ const AddBlog = ({ params }) => {
   }
 
   return (
-    <div className="h-[82vh] overflow-y-auto px-3">
+    <div className="h-[90vh] overflow-y-auto px-3">
       <Toaster />
       <h1 className="text-xl font-bold mb-2 cursor-pointer gradientHover w-fit text-newBlue">
         Update Blog
@@ -121,7 +127,6 @@ const AddBlog = ({ params }) => {
 
       <Editor
         apiKey="b887tqysd247td71uhou47927s7mrfwtpciezsx7sndajlol"
-        value={product?.description}
         onInit={(evt, editor) => (editorRef.current = editor)}
         init={{
           height: 500,
