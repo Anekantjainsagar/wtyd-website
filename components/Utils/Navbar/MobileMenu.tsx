@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import NavItems from "./NavItems";
 import Signup from "./Signup";
 
-const MobileMenu = ({ onClose }) => {
+interface MobileMenuProps {
+  onClose: () => void;
+}
+
+const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
   return (
     <motion.div
       initial={{ y: "-100%" }}
