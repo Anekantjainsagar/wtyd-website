@@ -44,8 +44,8 @@ const blogs: BlogStruct[] = [
 
 const BlogsDashboard = () => {
   return (
-    <div className="px-[3vw] py-[4vw]">
-      <h3 className="text-blue-700 text-4xl font-semibold mb-8">
+    <div className="px-[5vw] md:px-[3vw] py-[4vw]">
+      <h3 className="text-blue-700 text-3xl md:text-4xl font-semibold mb-3 md:mb-8">
         Blogs Dashboard
       </h3>
 

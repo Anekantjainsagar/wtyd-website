@@ -21,25 +21,27 @@ const blogs = [
 
 const BlogsPage = () => {
   return (
-    <div className="pt-[6vw]">
+    <div className="pt-[18vw] md:pt-[6vw]">
       <InputSections />
-      <h4 className="px-[3vw] text-6xl font-medium mt-6">Blogs</h4>
+      <h4 className="px-[5vw] md:px-[3vw] text-3xl md:text-6xl font-medium mt-6">
+        Blogs
+      </h4>
       <RecentBlog />
-      <div className="px-[3vw] flex items-center">
-        <div className="w-5/12 pr-6">
+      <div className="px-[5vw] md:px-[3vw] flex md:flex-row flex-col items-center md:space-y-0 space-y-6">
+        <div className="md:w-5/12 md:pr-6">
           <VerticalBlog {...blogs[0]} />
         </div>
-        <div className="w-7/12 space-y-6">
+        <div className="md:w-7/12 space-y-6">
           {blogs?.map((e, idx) => {
             return <Blog {...e} key={idx} />;
           })}
         </div>
       </div>
-      <div className="px-[3vw] flex flex-row-reverse items-center mt-6">
-        <div className="w-5/12 pl-6">
+      <div className="px-[5vw] md:px-[3vw] flex md:flex-row flex-col items-center md:space-y-0 space-y-6 md:mt-0 mt-6">
+        <div className="md:w-5/12 md:pr-6">
           <VerticalBlog {...blogs[0]} />
         </div>
-        <div className="w-7/12 space-y-6">
+        <div className="md:w-7/12 space-y-6">
           {blogs?.map((e, idx) => {
             return <Blog {...e} key={idx} />;
           })}

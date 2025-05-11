@@ -25,8 +25,8 @@ const blogs = [
 
 const BlogPageSingle = () => {
   return (
-    <div className="pt-[8vw]">
-      <h4 className="text-center text-6xl font-bold mt-6">
+    <div className="pt-[22vw] md:pt-[8vw]">
+      <h4 className="text-center text-3xl md:text-6xl font-bold mt-6 md:mb-0 mb-4">
         Nvidia GTC Sets Bold AI Vision
       </h4>
       <Image
@@ -34,12 +34,12 @@ const BlogPageSingle = () => {
         alt="Blog"
         width={1000}
         height={1000}
-        className="w-7/12 mx-auto rounded-xl my-8 object-cover"
+        className="md:w-7/12 w-[90vw] mx-auto rounded-xl my-0 md:my-8 object-cover"
       />
       <NvidiaGTCSummary />
-      <div className="bg-[#FAF8FF] px-[3vw] py-10">
-        <h4 className="text-4xl font-medium">Related Blogs</h4>
-        <div className="flex items-center gap-x-8 mt-5">
+      <div className="bg-[#FAF8FF] px-[5vw] md:px-[3vw] py-[6vw] md:py-10">
+        <h4 className="text-3xl md:text-4xl font-medium">Related Blogs</h4>
+        <div className="flex md:flex-row flex-col items-center gap-6 md:gap-8 mt-5">
           {blogs?.map((e, idx) => {
             return <VerticalBlog {...e} key={idx} />;
           })}
@@ -51,7 +51,7 @@ const BlogPageSingle = () => {
 
 const NvidiaGTCSummary = () => {
   return (
-    <div className="w-7/12 mx-auto py-4 mb-[3vw]">
+    <div className="md:px-0 px-[5vw] md:w-7/12 mx-auto py-4 mb-[3vw]">
       <p className="text-xl text-gray-700 mb-6">
         At NVIDIA&apos;s GTC 2025 conference, CEO Jensen Huang unveiled a
         comprehensive vision for the future of artificial intelligence,

@@ -53,9 +53,9 @@ const projectData = [
 const ProjectsView = () => {
   return (
     <div className="px-[5vw] md:px-[3vw] py-[3vw] bg-white">
-      <h2 className="text-3xl md:text-5xl font-medium mb-6">Our Projects</h2>
+      <h2 className="text-3xl md:text-5xl font-medium mb-4 md:mb-6">Our Projects</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-9">
         {projectData.map((project, index) => (
           <div
             key={index}

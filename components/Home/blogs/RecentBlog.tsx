@@ -5,7 +5,7 @@ import BlogFilter from "./BlogFilter";
 
 const RecentBlog = () => {
   return (
-    <div className="bg-white flex md:flex-row flex-col py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
+    <div className="bg-white flex md:flex-row flex-col py-[5vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
       <div className="md:w-1/2 bg-white p-4 md:p-6 rounded-md shadow-lg">
         <Image
           width={1000}

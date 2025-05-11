@@ -5,20 +5,20 @@ import Link from "next/link";
 
 const ProductView = () => {
   return (
-    <div className="px-6 md:px-[3vw] pb-[4vw] pt-[8vw] bg-white text-gray-800">
+    <div className="px-[5vw] md:px-[3vw] pb-[4vw] pt-[24vw] md:pt-[8vw] bg-white text-gray-800">
       {/* Top Section */}
-      <div className="bg-newBlue text-white rounded-xl p-6 md:p-10 flex flex-col md:flex-row gap-6 items-center relative">
+      <div className="bg-newBlue text-white rounded-xl p-4 md:p-10 flex flex-col md:flex-row gap-3 md:gap-6 items-center relative">
         <Link
           href="/projects"
-          className="inline-block absolute top-6 left-6 text-lg font-medium text-blue-600 bg-white px-6 py-2.5 rounded-md transition"
+          className="hidden md:inline-block absolute top-6 left-6 text-lg font-medium text-blue-600 bg-white px-6 py-2.5 rounded-md transition"
         >
           Back to projects
         </Link>
         <div className="flex-1">
-          <h1 className="text-2xl md:text-5xl font-bold mb-2">
+          <h1 className="text-2xl md:text-5xl font-bold mb-1 md:mb-2">
             Relevant Projects on Web
           </h1>
-          <p className="text-sm md:text-xl w-9/12 mt-2.5">
+          <p className="text-base md:text-xl md:w-9/12 md:mt-2.5">
             Offers a variety of courses to upskill learners in trending
             technologies. Provides recognized certificates to boost resumes.
           </p>
@@ -29,18 +29,18 @@ const ProductView = () => {
             alt="Project banner"
             width={1000}
             height={1000}
-            className="rounded-md h-[45vh] object-cover"
+            className="rounded-md h-[25vh] md:h-[45vh] object-cover"
           />
         </div>
       </div>
 
       {/* Title */}
-      <h2 className="text-2xl md:text-4xl font-semibold mt-10 text-newBlue">
+      <h2 className="text-2xl md:text-4xl font-semibold mt-6 md:mt-10 text-newBlue">
         MASS Mailer
       </h2>
 
       {/* Description */}
-      <div className="mt-4 text-gray-700 leading-relaxed text-sm md:text-xl space-y-4">
+      <div className="mt-2 md:mt-4 text-gray-700 leading-relaxed md:text-xl space-y-4">
         <p>
           This is a very simple bulk email sender (client), implemented in
           Python and Eel. It sends an email message (by given HTML template) to
@@ -87,13 +87,13 @@ const ProductView = () => {
       </div>
 
       {/* GitHub Button */}
-      <div className="mt-8">
+      <div className="mt-6 md:mt-8">
         <Link
           href="https://github.com"
           target="_blank"
-          className="inline-flex items-center gap-4 text-lg bg-newBlue text-white px-7 py-2.5 rounded-md font-medium transition"
+          className="inline-flex items-center gap-2 md:gap-4 md:text-lg bg-newBlue text-white px-7 py-2.5 rounded-md font-medium transition"
         >
-          <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 md:w-7 h-5 md:h-7" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0.297C5.37 0.297 0 5.667 0 12.297c0 5.289 3.438 9.773 8.207 11.387.599.111.793-.26.793-.577 0-.285-.01-1.04-.015-2.042-3.338.724-4.042-1.611-4.042-1.611-.546-1.386-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.238 1.84 1.238 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.76-1.605-2.665-.304-5.466-1.332-5.466-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.51 11.51 0 0 1 3.003-.404c1.018.005 2.043.138 3.003.404 2.289-1.552 3.295-1.23 3.295-1.23.655 1.653.243 2.873.12 3.176.77.84 1.233 1.91 1.233 3.221 0 4.609-2.807 5.624-5.479 5.921.43.371.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .32.192.694.801.576C20.565 22.065 24 17.583 24 12.297 24 5.667 18.627 0.297 12 0.297z" />
           </svg>
           GitHub

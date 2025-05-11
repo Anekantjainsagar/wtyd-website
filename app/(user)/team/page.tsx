@@ -49,11 +49,11 @@ const teamMembers = [
 
 const OurTeam = () => {
   return (
-    <div className="pt-[9vw] px-[3vw]">
+    <div className="pt-[24vw] md:pt-[9vw] px-[5vw] md:px-[3vw]">
       <div className="text-center mb-[5vw]">
-        <p className="text-newGrey text-xl">Our Team</p>
-        <h2 className="text-6xl font-bold text-newBlue">Members</h2>
-        <p className="text-newGrey text-xl w-5/12 pt-6 mx-auto">
+        <p className="text-newGrey text-lg md:text-xl">Our Team</p>
+        <h2 className="text-4xl md:text-6xl font-bold text-newBlue">Members</h2>
+        <p className="text-newGrey text-lg md:text-xl md:w-5/12 pt-1.5 md:pt-6 mx-auto">
           Meet the passionate minds turning innovation into reality. Together,
           we build tech that solves real-world problems.
         </p>

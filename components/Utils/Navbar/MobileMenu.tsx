@@ -28,7 +28,7 @@ const MobileMenu = ({ onClose }) => {
       </div>
 
       {/* Auth Button */}
-      <div className="mt-6">
+      <div className="mt-6" onClick={onClose}>
         <Signup />
       </div>
     </motion.div>

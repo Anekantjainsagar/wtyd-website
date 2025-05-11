@@ -73,7 +73,7 @@ export default function RegisterPage() {
   return (
     <div className="h-[100vh] flex-col lg:flex-row bg-newBlue flex items-center justify-center">
       {/* Left */}
-      <div className="lg:w-1/2 h-full flex items-center justify-center">
+      <div className="lg:w-1/2 h-full hidden md:flex items-center justify-center">
         <Image
           src="/assets/login.png"
           alt="Register Illustration"
@@ -84,11 +84,11 @@ export default function RegisterPage() {
       </div>
 
       {/* Right */}
-      <div className="lg:w-1/2 h-[100vh] px-12 md:px-16 pb-8 md:pb-12 pt-[8vw] bg-white flex flex-col items-center justify-center">
-        <h2 className="text-[45px] font-semibold mb-2 w-full">
+      <div className="lg:w-1/2 w-full h-[100vh] px-[5vw] md:px-16 pb-8 md:pb-12 pt-[8vw] bg-white flex flex-col items-center justify-center">
+        <h2 className="text-3xl md:text-[45px] font-semibold mb-2 w-full">
           Create Account
         </h2>
-        <p className="text-newGrey text-lg mb-6 w-full">
+        <p className="text-newGrey md:text-lg mb-6 w-full">
           Register and get started
         </p>
 

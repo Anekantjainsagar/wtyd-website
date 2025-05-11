@@ -2,7 +2,7 @@ import React from "react";
 
 const CTA = () => {
   return (
-    <div className="absolute -top-[58vw] md:-top-[8vw] left-1/2 -translate-x-1/2 bg-newBlue text-white w-11/12 md:w-[60vw] flex flex-col items-center justify-center py-7 rounded-xl">
+    <div className="absolute -top-[58vw] md:-top-[8vw] left-1/2 -translate-x-1/2 bg-newBlue text-white md:px-0 px-4 w-[90vw] md:w-[60vw] flex flex-col items-center justify-center py-7 rounded-xl">
       <h3 className="text-4xl text-center">Grow your skills with wtyd</h3>
       <p className="text-lg py-3 text-center">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

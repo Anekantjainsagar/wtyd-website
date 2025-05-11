@@ -4,7 +4,7 @@ import ProjectsView from "@/components/Projects/ProjectsView";
 
 const ProjectsPage = () => {
   return (
-    <div className="pt-[6vw]">
+    <div className="pt-[18vw] md:pt-[6vw]">
       <InputSections />
       <ProjectsView />
     </div>
