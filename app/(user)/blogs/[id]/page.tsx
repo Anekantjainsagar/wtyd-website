@@ -3,16 +3,12 @@ import VerticalBlog, { BlogType } from "@/components/Home/blogs/VerticalBlog";
 import UserContext, { createMarkupText } from "@/context/UserContext";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import toast from "react-hot-toast";
 
-interface BlogPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const BlogPageSingle = ({ params }: BlogPageProps) => {
-  const { id } = params;
+const BlogPageSingle = () => {
+  const params = useParams();
+  const id = params?.id as string;
   const [blog, setBlog] = useState<BlogType>();
   const [loading, setLoading] = useState(true);
   const context = useContext(UserContext);
