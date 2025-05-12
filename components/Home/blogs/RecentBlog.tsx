@@ -1,9 +1,20 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BlogFilter from "./BlogFilter";
+import UserContext, { createMarkupText } from "@/context/UserContext";
 
 const RecentBlog = () => {
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("Blogs must be used within a UserProvider");
+  }
+
+  const { blogs } = context;
+  const blog = blogs[0];
+
   return (
     <div className="bg-white flex md:flex-row flex-col py-[5vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
       <div className="md:w-1/2 bg-white p-4 md:p-6 rounded-md shadow-lg">
@@ -18,14 +29,14 @@ const RecentBlog = () => {
       <div className="md:w-1/2 px-0 md:px-8 md:py-8 py-6">
         <BlogFilter />
         <h3 className="text-3xl md:text-6xl font-bold leading-tight text-gray-800 mb-2 md:mb-4 mt-[2vw]">
-          Nvidia GTC Sets Bold AI Vision
+          {blog?.title}
         </h3>
-        <p className="text-newGrey text-lg md:text-xl mb-6 tracking-wide">
-          Nvidia GTC 2025 was packed with significant announcements and
-          showcased the company&apos;s continued dominance in the AI hardware
-          space. However, the event also highlighted potential challenges and
-          shifts in the competitive landscape.
-        </p>
+        <p
+          className="text-newGrey text-lg md:text-xl mb-6 tracking-wide"
+          dangerouslySetInnerHTML={createMarkupText(
+            blog?.content?.slice(0, 150) + "..."
+          )}
+        />
         <Link
           href="/"
           className="flex items-center text-lg md:text-xl text-blue-600 hover:text-blue-800 font-medium focus:outline-none"

@@ -7,8 +7,8 @@ import { RiDashboardLine } from "react-icons/ri";
 import { GoProjectRoadmap } from "react-icons/go";
 import { CiLogout, CiUser } from "react-icons/ci";
 import { usePathname, useRouter } from "next/navigation";
-import { FaBlogger, FaCircleNotch } from "react-icons/fa";
 import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
+import { FaBlogger, FaCircleNotch, FaUsers } from "react-icons/fa";
 
 const Sidebar = () => {
   const { logout } = useAuth();
@@ -50,6 +50,20 @@ const Sidebar = () => {
         {
           name: "Add New Project",
           route: "/admin/projects/add",
+        },
+      ],
+    },
+    {
+      name: "Team",
+      icon: <FaUsers size={20} className="mr-2 pb-0.5" />,
+      sub: [
+        {
+          name: "All Members",
+          route: "/admin/members",
+        },
+        {
+          name: "Add New Member",
+          route: "/admin/members/add",
         },
       ],
     },

@@ -1,30 +1,18 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import Blog from "./Blog";
-
-const blogs = [
-  {
-    title: "General IoT",
-    description:
-      "These blogs cover a broad range of IoT-related news, instructional guides and other content.",
-    image: "/assets/home/blog.png",
-  },
-  {
-    title: "General IoT",
-    description:
-      "These blogs cover a broad range of IoT-related news, instructional guides and other content.",
-    image: "/assets/home/blog.png",
-  },
-  {
-    title: "General IoT",
-    description:
-      "These blogs cover a broad range of IoT-related news, instructional guides and other content.",
-    image: "/assets/home/blog.png",
-  },
-];
+import UserContext from "@/context/UserContext";
 
 const Popular = () => {
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("Blogs must be used within a UserProvider");
+  }
+
+  const { blogs } = context;
+
   return (
     <div className="flex flex-col lg:flex-row gap-3 md:gap-8 bg-[#FAF8FF] py-[10vw] md:py-[4vw]">
       {/* Left Section */}
@@ -32,7 +20,9 @@ const Popular = () => {
         <p className="text-newBlue text-lg md:text-xl font-medium mb-1 pl-[5vw] md:pl-[3vw]">
           Trending
         </p>
-        <h2 className="text-3xl md:text-6xl font-bold mb-2 pl-[5vw] md:pl-[3vw]">Our Popular Blogs</h2>
+        <h2 className="text-3xl md:text-6xl font-bold mb-2 pl-[5vw] md:pl-[3vw]">
+          Our Popular Blogs
+        </h2>
         <p className="text-newGrey text-lg md:text-2xl mb-3 md:mb-6 pl-[5vw] md:pl-[3vw] w-6/12">
           Stay informed with our latest insights
         </p>

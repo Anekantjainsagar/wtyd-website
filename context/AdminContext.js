@@ -4,6 +4,7 @@ import API_URI from "@/utils/url";
 import toast from "react-hot-toast";
 import { getCookie } from "@/utils/cookies";
 import { createContext, useEffect, useState } from "react";
+import { setRequestMeta } from "next/dist/server/request-meta";
 
 const AdminContext = createContext();
 
@@ -19,6 +20,25 @@ export const AdminProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [blogs, setBlogs] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [team, setTeam] = useState([]);
+
+  const getTeam = () => {
+    let token = getCookie("token");
+
+    axios
+      .get(`${API_URI}/api/v1/admin/team/all`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        if (!res.data.success) {
+          toast.error(res.data.error);
+        }
+        setTeam(res.data.data);
+      })
+      .catch((e) => {
+        toast.error(e.response.data.error);
+      });
+  };
 
   const getProjects = () => {
     let token = getCookie("token");
@@ -151,6 +171,7 @@ export const AdminProvider = ({ children }) => {
     getAllUsers();
     getBlogs();
     getProjects();
+    getTeam();
   }, []);
 
   return (
@@ -170,6 +191,9 @@ export const AdminProvider = ({ children }) => {
         projects,
         setProjects,
         getProjects,
+        team,
+        setTeam,
+        getTeam,
       }}
     >
       {children}

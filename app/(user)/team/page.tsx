@@ -1,53 +1,17 @@
-import MemberBlock from "@/components/Teams/MemberBlock";
-
-const teamMembers = [
-  {
-    name: "Noopur Makhija",
-    role: "Content Head",
-    image: "/assets/members/Nopur.png",
-    desc: "Creative writer having working experience of more than 12 years in content development.",
-    social: {
-      facebook: "/",
-      linkedin: "/",
-      github: "/",
-    },
-  },
-  {
-    name: "ABC Sharma",
-    role: "Project Head",
-    image: "/assets/members/people.png",
-    desc: "A blend of creativity, code, and commitment.",
-    social: {
-      facebook: "/",
-      linkedin: "/",
-      github: "/",
-    },
-  },
-  {
-    name: "ABC Sharma",
-    role: "Project Head",
-    image: "/assets/members/people.png",
-    desc: "A blend of creativity, code, and commitment.",
-    social: {
-      facebook: "/",
-      linkedin: "/",
-      github: "/",
-    },
-  },
-  {
-    name: "ABC Sharma",
-    role: "Project Head",
-    image: "/assets/members/people.png",
-    desc: "A blend of creativity, code, and commitment.",
-    social: {
-      facebook: "/",
-      linkedin: "/",
-      github: "/",
-    },
-  },
-];
+"use client";
+import MemberBlock, { MemberType } from "@/components/Teams/MemberBlock";
+import UserContext from "@/context/UserContext";
+import { useContext } from "react";
 
 const OurTeam = () => {
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("OurTeam must be used within a UserProvider");
+  }
+
+  const { team } = context;
+
   return (
     <div className="pt-[24vw] md:pt-[9vw] px-[5vw] md:px-[3vw]">
       <div className="text-center mb-[5vw]">
@@ -60,7 +24,7 @@ const OurTeam = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-12 gap-y-20">
-        {teamMembers.map((member, index) => (
+        {team.map((member: MemberType, index: number) => (
           <MemberBlock key={index} member={member} />
         ))}
       </div>
