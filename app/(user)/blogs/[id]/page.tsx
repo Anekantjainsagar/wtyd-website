@@ -4,7 +4,6 @@ import UserContext, { createMarkupText } from "@/context/UserContext";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Metadata } from "next";
 
 interface BlogPageProps {
   params: {
