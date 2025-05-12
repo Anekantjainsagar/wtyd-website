@@ -35,8 +35,8 @@ export interface UserContextType {
   setBlogs: Dispatch<SetStateAction<Blog[]>>;
   getBlogs: () => void;
 
-  projects: Project[];
-  setProjects: Dispatch<SetStateAction<Project[]>>;
+  projects: ProjectType[];
+  setProjects: Dispatch<SetStateAction<ProjectType[]>>;
   getProjects: () => void;
 
   team: MemberType[];
@@ -52,7 +52,7 @@ export function createMarkupText(content?: string) {
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
   const [team, setTeam] = useState<MemberType[]>([]);
 
   const getTeam = () => {
