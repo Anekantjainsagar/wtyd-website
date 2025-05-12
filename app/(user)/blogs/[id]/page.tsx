@@ -4,8 +4,15 @@ import UserContext, { createMarkupText } from "@/context/UserContext";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Metadata } from "next";
 
-const BlogPageSingle = ({ params }: { params: { id: string } }) => {
+interface BlogPageProps {
+  params: {
+    id: string;
+  };
+}
+
+const BlogPageSingle = ({ params }: BlogPageProps) => {
   const { id } = params;
   const [blog, setBlog] = useState<BlogType>();
   const [loading, setLoading] = useState(true);
