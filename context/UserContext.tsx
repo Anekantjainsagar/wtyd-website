@@ -22,10 +22,12 @@ export interface Blog {
   isPublished: boolean;
 }
 
-export interface Project {
+export interface ProjectType {
   _id: string;
   title: string;
-  description: string;
+  desc: string;
+  image: string;
+  category: string;
 }
 
 export interface UserContextType {
@@ -70,7 +72,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const getProjects = () => {
     axios
-      .get(`${API_URI}/api/v1/admin/projects/all`)
+      .get(`${API_URI}/api/v1/users/projects`)
       .then((res) => {
         if (!res.data.success) {
           toast.error(res.data.error);

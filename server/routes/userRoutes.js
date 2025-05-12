@@ -11,5 +11,6 @@ router
 
 router.route("/team").get(teamController.getAllMembers);
 router.route("/blogs").get(teamController.getAllBlogs);
+router.route("/projects").get(teamController.getAllProjects);
 
 module.exports = router;

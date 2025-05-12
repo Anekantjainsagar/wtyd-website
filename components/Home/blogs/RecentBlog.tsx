@@ -21,8 +21,8 @@ const RecentBlog = () => {
         <Image
           width={1000}
           height={1000}
-          src="/assets/home/blog.png"
-          alt="Laptop on wooden table with coffee and notepad"
+          src={blog?.coverImage}
+          alt={blog?.title}
           className="rounded-md"
         />
       </div>

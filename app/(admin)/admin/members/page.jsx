@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
-import API_URI from "@/utils/url";
+import API_URI, { ACTUAL_URI } from "@/utils/url";
 import axios from "axios";
 import Link from "next/link";
 import Select from "../../Components/Utils/Select";
@@ -104,10 +104,7 @@ const ProjectCard = ({ data }) => {
         </div>
       </div>
       <div className="flex items-center">
-        <Link
-          href={`https://trubuddies.com/projects/${data?._id}`}
-          target="_blank"
-        >
+        <Link href={`${ACTUAL_URI}/team`} target="_blank">
           <AiOutlineEye
             className="text-oceanGreen bg-lightOceanGreen p-2 rounded-full hover:text-white hover:bg-oceanGreen transition-all mr-3"
             size={35}

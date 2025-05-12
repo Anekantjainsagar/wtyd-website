@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
-import API_URI from "@/utils/url";
+import API_URI, { ACTUAL_URI } from "@/utils/url";
 import axios from "axios";
 import Link from "next/link";
 import Select from "../../Components/Utils/Select";
@@ -92,6 +92,10 @@ const ProjectCard = ({ data }) => {
     });
   };
 
+  const truncate = (str) => {
+    return str?.length > 20 ? str.slice(0, 20) + "..." : str;
+  };
+
   return (
     <div className="rounded-md flex items-center justify-between mb-3 cursor-pointer shadow-sm shadow-gray-200 p-2">
       <div className="flex w-[68vw] items-center justify-between">
@@ -104,14 +108,16 @@ const ProjectCard = ({ data }) => {
         />
         <div className="py-1 w-10/12 ml-3">
           <p className="text-black text-xl font-bold">
-            {data?.title} ({data?.category})
+            {`${truncate(data?.title)} (${truncate(data?.category)})`}
           </p>
           <div className="mx-0 px-0" dangerouslySetInnerHTML={createMarkup()} />
         </div>
       </div>
       <div className="flex items-center">
         <Link
-          href={`https://trubuddies.com/projects/${data?._id}`}
+          href={`${ACTUAL_URI}/projects/${data?.title
+            ?.toLowerCase()
+            ?.replaceAll(" ", "-")}`}
           target="_blank"
         >
           <AiOutlineEye

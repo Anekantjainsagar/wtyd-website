@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
-import API_URI from "@/utils/url";
+import API_URI, { ACTUAL_URI } from "@/utils/url";
 import axios from "axios";
 import Link from "next/link";
 import Select from "../../Components/Utils/Select";
@@ -136,7 +136,9 @@ const Product = ({ data }) => {
       </div>
       <div className="flex items-center">
         <Link
-          href={`https://trubuddies.com/blogs/${data?._id}`}
+          href={`${ACTUAL_URI}/blogs/${data?.title
+            ?.toLowerCase()
+            ?.replaceAll(" ", "-")}`}
           target="_blank"
         >
           <AiOutlineEye

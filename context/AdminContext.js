@@ -4,7 +4,6 @@ import API_URI from "@/utils/url";
 import toast from "react-hot-toast";
 import { getCookie } from "@/utils/cookies";
 import { createContext, useEffect, useState } from "react";
-import { setRequestMeta } from "next/dist/server/request-meta";
 
 const AdminContext = createContext();
 
