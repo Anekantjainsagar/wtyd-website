@@ -94,6 +94,7 @@ const Blog = ({ blog }: { blog: BlogType }) => {
 
         <button
           onClick={(e) => {
+            e.preventDefault();
             handleDelete(blog);
           }}
           className="px-7 md:px-8 py-2.5 flex items-center gap-x-2.5 rounded-full bg-red-600 text-white font-semibold md:text-lg hover:bg-red-700"
