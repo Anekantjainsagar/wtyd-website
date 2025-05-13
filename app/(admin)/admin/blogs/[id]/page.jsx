@@ -28,7 +28,13 @@ const AddBlog = ({ params }) => {
     if (!blogs || blogs.length === 0) return;
 
     const temp = blogs.find(
-      (e) => e?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+      (e) =>
+        e?.title
+          ?.toLowerCase()
+          ?.replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(":", "")
+          .replaceAll(";", "") === id
     );
 
     if (temp) {
@@ -77,7 +83,12 @@ const AddBlog = ({ params }) => {
             // Update that specific blog in setBlogs
             setBlogs((prevBlogs) =>
               prevBlogs.map((blog) =>
-                blog?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+                blog?.title
+                  ?.toLowerCase()
+                  ?.replaceAll(" ", "-")
+                  .replaceAll(",", "")
+                  .replaceAll(":", "")
+                  .replaceAll(";", "") === id
                   ? {
                       ...blog,
                       coverImage: image,

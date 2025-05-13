@@ -29,7 +29,13 @@ export default function UpdateProject({ params }) {
   useEffect(() => {
     if (!team || team.length === 0) return;
     const temp = team.find(
-      (p) => p?.name?.toLowerCase()?.replaceAll(" ", "-") === id
+      (p) =>
+        p?.name
+          ?.toLowerCase()
+          ?.replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(":", "")
+          .replaceAll(";", "") === id
     );
     if (temp) {
       setImage(temp?.image);
@@ -83,7 +89,12 @@ export default function UpdateProject({ params }) {
           toast.success("Project updated successfully");
           setTeam((prev) =>
             prev.map((p) =>
-              p?.name?.toLowerCase()?.replaceAll(" ", "-") === id
+              p?.name
+                ?.toLowerCase()
+                ?.replaceAll(" ", "-")
+                .replaceAll(",", "")
+                .replaceAll(":", "")
+                .replaceAll(";", "") === id
                 ? {
                     ...project,
                     image: image,

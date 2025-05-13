@@ -33,6 +33,7 @@ const addBlog = async (req, res, next) => {
     const newBlog = await adminBlogService.addBlog({
       ...req.body,
       author: req.user._id,
+      status: "uploaded",
     });
     res.status(201).json({
       success: true,

@@ -23,7 +23,13 @@ const BlogPageSingle = () => {
     if (!blogs || blogs.length === 0) return;
 
     const temp = blogs.find(
-      (e) => e?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+      (e) =>
+        e?.title
+          ?.toLowerCase()
+          ?.replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(":", "")
+          .replaceAll(";", "") === id
     );
 
     if (temp) {
@@ -49,19 +55,25 @@ const BlogPageSingle = () => {
         {blog?.title}
       </h4>
       <Image
-        src={blog?.coverImage }
+        src={blog?.coverImage}
         alt={blog?.title || "Blog Cover image"}
         width={1000}
         height={1000}
         className="md:w-7/12 w-[90vw] mx-auto rounded-xl my-0 md:my-8 object-cover"
       />
-      <p
-        className="md:px-0 px-[5vw] md:w-7/12 mx-auto py-4 mb-[3vw]"
-        dangerouslySetInnerHTML={createMarkupText(blog?.content)}
-      />
+      <div className="md:px-0 px-[5vw] md:w-7/12 mx-auto mb-[3vw] py-3">
+        <p dangerouslySetInnerHTML={createMarkupText(blog?.content)} />
+        <p className="text-end mt-2">
+          Written by,
+          <br />
+          <span className="font-semibold text-xl">{blog?.author?.name}</span>
+          <br />
+          <span className="text-lg">{blog?.author?.profession}</span>
+        </p>
+      </div>
       <div className="bg-[#FAF8FF] px-[5vw] md:px-[3vw] py-[6vw] md:py-10">
         <h4 className="text-3xl md:text-4xl font-medium">Related Blogs</h4>
-        <div className="flex md:flex-row flex-col items-center gap-6 md:gap-8 mt-5">
+        <div className="grid grid-cols-3 md:flex-row flex-col items-start gap-6 md:gap-8 mt-5">
           {blogs?.map((e, idx) => (
             <VerticalBlog {...e} key={idx} />
           ))}

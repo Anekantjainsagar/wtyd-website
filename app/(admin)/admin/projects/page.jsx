@@ -117,7 +117,10 @@ const ProjectCard = ({ data }) => {
         <Link
           href={`${ACTUAL_URI}/projects/${data?.title
             ?.toLowerCase()
-            ?.replaceAll(" ", "-")}`}
+            ?.replaceAll(" ", "-")
+            .replaceAll(",", "")
+            .replaceAll(":", "")
+            .replaceAll(";", "")}`}
           target="_blank"
         >
           <AiOutlineEye
@@ -132,7 +135,10 @@ const ProjectCard = ({ data }) => {
             router.push(
               `/admin/projects/${data?.title
                 ?.toLowerCase()
-                ?.replaceAll(" ", "-")}`
+                ?.replaceAll(" ", "-")
+                .replaceAll(",", "")
+                .replaceAll(":", "")
+                .replaceAll(";", "")}`
             );
           }}
         />

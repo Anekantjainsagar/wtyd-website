@@ -13,15 +13,7 @@ import {
 } from "react";
 import { MemberType } from "@/components/Teams/MemberBlock";
 import { useAuth } from "./AuthContext";
-
-export interface Blog {
-  _id: string;
-  title: string;
-  content: string;
-  coverImage: string;
-  author: string;
-  isPublished: boolean;
-}
+import { BlogType } from "@/components/Home/blogs/VerticalBlog";
 
 export interface ProjectType {
   _id: string;
@@ -32,11 +24,11 @@ export interface ProjectType {
 }
 
 export interface UserContextType {
-  myBlogs: Blog[];
-  setMyBlogs: Dispatch<SetStateAction<Blog[]>>;
+  myBlogs: BlogType[];
+  setMyBlogs: Dispatch<SetStateAction<BlogType[]>>;
 
-  blogs: Blog[];
-  setBlogs: Dispatch<SetStateAction<Blog[]>>;
+  blogs: BlogType[];
+  setBlogs: Dispatch<SetStateAction<BlogType[]>>;
   getBlogs: () => void;
 
   projects: ProjectType[];
@@ -56,8 +48,8 @@ export function createMarkupText(content?: string) {
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [myBlogs, setMyBlogs] = useState<Blog[]>([]);
+  const [blogs, setBlogs] = useState<BlogType[]>([]);
+  const [myBlogs, setMyBlogs] = useState<BlogType[]>([]);
   const [team, setTeam] = useState<MemberType[]>([]);
   const [projects, setProjects] = useState<ProjectType[]>([]);
 

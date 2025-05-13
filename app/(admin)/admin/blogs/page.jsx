@@ -95,6 +95,7 @@ const Blogs = () => {
 
 const Product = ({ data }) => {
   const history = useRouter();
+  const [statusVal, setStatusVal] = useState("");
   const { requestConfirm } = useConfirm();
   const { blogs, setBlogs } = useContext(AdminContext);
 
@@ -119,9 +120,13 @@ const Product = ({ data }) => {
     });
   };
 
+  useEffect(() => {
+    setStatusVal(data?.status);
+  }, [data]);
+
   return (
     <div className="rounded-md flex items-center justify-between mb-3 cursor-pointer shadow-sm shadow-gray-200 p-2">
-      <div className="flex w-[68vw] items-center justify-between">
+      <div className="flex w-[68vw] items-center justify-start">
         <Image
           src={data?.coverImage}
           width={100}
@@ -129,16 +134,36 @@ const Product = ({ data }) => {
           alt="Image"
           className="w-2/12 h-[14vh] rounded-md object-cover object-center"
         />
-        <div className="py-1 w-10/12 ml-3">
+        <div className="py-1 w-9/12 ml-3">
           <p className="text-black text-xl font-bold">{data?.title}</p>
           <div className="mx-0 px-0" dangerouslySetInnerHTML={createMarkup()} />
         </div>
       </div>
       <div className="flex items-center">
+        <Select
+          value={statusVal}
+          onChange={(e) => {
+            setStatusVal(e.target.value);
+            axios.put(
+              `${API_URI}/api/v1/admin/blogs/update/${data?._id}`,
+              { ...data, status: e.target.value },
+              {
+                headers: {
+                  Authorization: `Bearer ${getCookie("token")}`,
+                },
+              }
+            );
+            toast.success(`${data?.title} status updated to ${e.target.value}`);
+          }}
+          options={["pending", "uploaded", "rejected"]}
+        />
         <Link
           href={`${ACTUAL_URI}/blogs/${data?.title
             ?.toLowerCase()
-            ?.replaceAll(" ", "-")}`}
+            ?.replaceAll(" ", "-")
+            .replaceAll(",", "")
+            .replaceAll(":", "")
+            .replaceAll(";", "")}`}
           target="_blank"
         >
           <AiOutlineEye
@@ -151,7 +176,12 @@ const Product = ({ data }) => {
           size={35}
           onClick={(e) => {
             history.push(
-              `/admin/blogs/${data?.title?.toLowerCase()?.replaceAll(" ", "-")}`
+              `/admin/blogs/${data?.title
+                ?.toLowerCase()
+                ?.replaceAll(" ", "-")
+                .replaceAll(",", "")
+                .replaceAll(":", "")
+                .replaceAll(";", "")}`
             );
           }}
         />

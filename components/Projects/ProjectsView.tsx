@@ -48,7 +48,10 @@ const ProjectsView = () => {
                 <Link
                   href={`/projects/${project?.title
                     ?.toLowerCase()
-                    ?.replaceAll(" ", "-")}`}
+                    ?.replaceAll(" ", "-")
+                    .replaceAll(",", "")
+                    .replaceAll(":", "")
+                    .replaceAll(";", "")}`}
                 >
                   {" "}
                   <button className="text-white px-7 md:px-9 py-1 md:py-1.5 rounded-full text-lg font-medium bg-newBlue transition">

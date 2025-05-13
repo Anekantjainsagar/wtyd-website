@@ -10,6 +10,8 @@ import { getCookie } from "@/utils/cookies";
 import { useConfirm } from "@/app/(admin)/Components/Utils/ConfirmProvier";
 import UserContext from "@/context/UserContext";
 import toast from "react-hot-toast";
+import { AiOutlineEye } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 const getStatusColor = (status: BlogStatus) => {
   switch (status) {
@@ -26,14 +28,21 @@ const getStatusColor = (status: BlogStatus) => {
 
 const getButtonClasses = (status: BlogStatus) => {
   const common =
-    "px-7 md:px-8 py-2.5 flex items-center gap-x-2.5 rounded-full text-white font-semibold md:text-lg";
-  if (status === "pending") return `${common} bg-blue-600 hover:bg-blue-700`;
+    "px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full text-white font-semibold md:text-lg";
+  if (status === "pending") return `${common} bg-newBlue hover:bg-newBlue/80`;
   return `${common} bg-gray-400 cursor-not-allowed`;
 };
 
 const Blog = ({ blog }: { blog: BlogType }) => {
+  const router = useRouter();
   const { requestConfirm } = useConfirm();
-  const { setMyBlogs, myBlogs } = useContext(UserContext);
+  const context = useContext(UserContext);
+
+  if (!context) {
+    throw new Error("Blogs must be used within a UserProvider");
+  }
+
+  const { setMyBlogs, myBlogs } = context;
 
   const handleDelete = (blog: BlogType) => {
     requestConfirm(`Are you sure you want to delete ${blog?.title}?`, () => {
@@ -57,18 +66,21 @@ const Blog = ({ blog }: { blog: BlogType }) => {
   };
 
   return (
-    <div className="bg-white relative shadow-md rounded-xl p-4 flex md:flex-row flex-col items-center justify-between">
+    <div
+      className="bg-white relative grid shadow-md rounded-xl p-4 md:flex-row flex-col items-center justify-between"
+      style={{ gridTemplateColumns: "40% 25% 35%" }}
+    >
       <div className="flex md:flex-row flex-col items-center gap-2 md:gap-6">
         <Image
           src={blog.coverImage}
           alt={blog.title}
           width={1000}
           height={1000}
-          className="rounded-xl md:w-[20vw] md:h-[10vw] object-cover"
+          className="rounded-xl md:w-[20vw] w-[20vw] object-cover"
         />
         <div className="w-full">
           <p className="font-medium text-start text-2xl md:text-3xl w-full">
-            {blog.title}
+            {blog.title?.slice(0, 20) + (blog?.title?.length > 20 ? "..." : "")}
           </p>
           <p className="text-gray-600 text-lg mt-1.5 md:mt-2">
             {new Date(blog.createdAt).toString().slice(4, 16)}
@@ -76,18 +88,38 @@ const Blog = ({ blog }: { blog: BlogType }) => {
         </div>
       </div>
 
-      <div className="flex items-center gap-1.5 md:gap-2.5 md:static absolute top-6 right-6 bg-white md:border-0 border border-gray-300 md:rounded-none rounded-full md:py-0 py-1 md:px-0 px-2">
-        <span
-          className={`w-2 md:w-4 h-2 md:h-4 rounded-full ${getStatusColor(
-            blog.status
-          )}`}
-        ></span>
-        <span className="text-sm md:text-xl md:font-medium capitalize">
-          {blog.status}
-        </span>
+      <div className="flex items-center justify-center">
+        <div className="flex items-center gap-1.5 md:gap-2.5 md:static absolute top-6 right-6 bg-white md:border-0 border border-gray-300 md:rounded-none rounded-full md:py-0 py-1 md:px-0 px-2">
+          <span
+            className={`w-2 md:w-4 h-2 md:h-4 rounded-full ${getStatusColor(
+              blog.status
+            )}`}
+          ></span>
+          <span className="text-sm md:text-xl md:font-medium capitalize">
+            {blog.status}
+          </span>
+        </div>
       </div>
 
-      <div className="flex items-center gap-4 md:gap-10 md:mt-0 mt-3">
+      <div className="flex items-center justify-end gap-4 md:gap-5 md:mt-0 mt-3">
+        {blog?.status === "uploaded" && (
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              router.push(
+                `/blogs/${blog?.title
+                  ?.toLowerCase()
+                  ?.replaceAll(" ", "-")
+                  .replaceAll(",", "")
+                  .replaceAll(":", "")
+                  .replaceAll(";", "")}`
+              );
+            }}
+            className="px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full bg-green-600 text-white font-semibold md:text-lg hover:bg-green-700"
+          >
+            <AiOutlineEye className="text-lg md:text-2xl" /> View Blog
+          </button>
+        )}
         <button className={getButtonClasses(blog.status)}>
           <GoPencil className="md:text-xl" /> Edit Blog
         </button>
@@ -97,7 +129,7 @@ const Blog = ({ blog }: { blog: BlogType }) => {
             e.preventDefault();
             handleDelete(blog);
           }}
-          className="px-7 md:px-8 py-2.5 flex items-center gap-x-2.5 rounded-full bg-red-600 text-white font-semibold md:text-lg hover:bg-red-700"
+          className="px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full bg-red-600 text-white font-semibold md:text-lg hover:bg-red-700"
         >
           <MdOutlineDelete className="text-lg md:text-2xl" /> Delete Blog
         </button>

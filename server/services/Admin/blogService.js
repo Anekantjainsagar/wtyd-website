@@ -1,8 +1,10 @@
 const Blog = require("../../models/Blog");
 
 // GET all blogs
-const getAllBlogs = async () => {
-  const blogs = await Blog.find().populate("author", "name email");
+const getAllBlogs = async (filtered = false) => {
+  const blogs = await Blog.find(
+    filtered ? { status: "uploaded" } : {}
+  ).populate("author", "name email profession");
   if (!blogs || blogs.length === 0) {
     throw new Error("No blogs found");
   }

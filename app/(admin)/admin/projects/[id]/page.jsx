@@ -28,7 +28,13 @@ export default function UpdateProject({ params }) {
   useEffect(() => {
     if (!projects || projects.length === 0) return;
     const temp = projects.find(
-      (p) => p?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+      (p) =>
+        p?.title
+          ?.toLowerCase()
+          ?.replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(":", "")
+          .replaceAll(";", "") === id
     );
     if (temp) {
       setImage(temp?.image);
@@ -74,7 +80,12 @@ export default function UpdateProject({ params }) {
             toast.success("Project updated successfully");
             setProjects((prev) =>
               prev.map((p) =>
-                p?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+                p?.title
+                  ?.toLowerCase()
+                  ?.replaceAll(" ", "-")
+                  .replaceAll(",", "")
+                  .replaceAll(":", "")
+                  .replaceAll(";", "") === id
                   ? {
                       ...p,
                       image: image,

@@ -26,7 +26,13 @@ const ProductView = () => {
     if (!projects || projects.length === 0) return;
 
     const temp = projects.find(
-      (e) => e?.title?.toLowerCase()?.replaceAll(" ", "-") === id
+      (e) =>
+        e?.title
+          ?.toLowerCase()
+          ?.replaceAll(" ", "-")
+          .replaceAll(",", "")
+          .replaceAll(":", "")
+          .replaceAll(";", "") === id
     );
 
     if (temp) {
@@ -67,13 +73,15 @@ const ProductView = () => {
           </p>
         </div>
         <div className="w-full md:w-1/2">
-         {project?.image&& <Image
-            src={project?.image }
-            alt={project?.title || ""}
-            width={1000}
-            height={1000}
-            className="rounded-md h-[25vh] md:h-[45vh] object-cover"
-          />}
+          {project?.image && (
+            <Image
+              src={project?.image}
+              alt={project?.title || ""}
+              width={1000}
+              height={1000}
+              className="rounded-md h-[25vh] md:h-[45vh] object-cover"
+            />
+          )}
         </div>
       </div>
 

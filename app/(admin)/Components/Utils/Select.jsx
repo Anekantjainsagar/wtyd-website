@@ -7,11 +7,11 @@ const Select = ({ value, onChange, options }) => {
       <select
         value={value}
         onChange={onChange}
-        className="appearance-none w-full rounded-lg text-darkGrey text-lg border px-3 py-2 outline-none"
+        className="appearance-none w-full rounded-lg text-darkGrey text-lg border px-3 py-2 outline-none capitalize"
       >
         {options.map((element, idx) => {
           return (
-            <option className="py-1" value={element} key={idx}>
+            <option className="py-1 capitalize" value={element} key={idx}>
               {element}
             </option>
           );

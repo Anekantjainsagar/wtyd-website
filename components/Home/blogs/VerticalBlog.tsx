@@ -11,6 +11,7 @@ export interface BlogType {
   content: string;
   createdAt: string;
   status: BlogStatus;
+  author: { name: string; profession: string };
 }
 
 const VerticalBlog = ({ coverImage, title, content }: BlogType) => {
@@ -27,17 +28,24 @@ const VerticalBlog = ({ coverImage, title, content }: BlogType) => {
       </div>
       <div className="w-full pt-5 flex flex-col justify-between">
         <div>
-          <h3 className="text-2xl md:text-3xl font-semibold mb-1 md:mb-2">
+          <h3 className="text-2xl line-clamp-1 md:text-3xl font-semibold mb-1 md:mb-2">
             {title}
           </h3>
           <p
-            className="md:text-lg text-gray-600"
+            className="md:text-lg text-gray-600 line-clamp-1"
             dangerouslySetInnerHTML={createMarkupText(
               content?.slice(0, 150) + "..."
             )}
           />{" "}
         </div>
-        <Link href={`/blogs/${title?.toLowerCase()?.replaceAll(" ", "-")}`}>
+        <Link
+          href={`/blogs/${title
+            ?.toLowerCase()
+            ?.replaceAll(" ", "-")
+            .replaceAll(",", "")
+            .replaceAll(":", "")
+            .replaceAll(";", "")}`}
+        >
           <button className="mt-4 w-full md:w-[7vw] bg-newBlue outline-none text-white py-2 rounded-md font-medium text-base">
             View
           </button>

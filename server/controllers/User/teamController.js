@@ -13,7 +13,7 @@ const getAllMembers = async (req, res, next) => {
 
 const getAllBlogs = async (req, res, next) => {
   try {
-    const blogs = await adminBlogService.getAllBlogs();
+    const blogs = await adminBlogService.getAllBlogs(true);
     res.status(200).json({
       success: true,
       data: blogs,

@@ -117,7 +117,10 @@ const ProjectCard = ({ data }) => {
             router.push(
               `/admin/members/${data?.name
                 ?.toLowerCase()
-                ?.replaceAll(" ", "-")}`
+                ?.replaceAll(" ", "-")
+                .replaceAll(",", "")
+                .replaceAll(":", "")
+                .replaceAll(";", "")}`
             );
           }}
         />
