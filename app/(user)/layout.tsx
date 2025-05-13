@@ -8,6 +8,7 @@ import Footer from "@/components/Utils/Footer";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserProvider } from "@/context/UserContext";
+import { ConfirmProvider } from "../(admin)/Components/Utils/ConfirmProvier";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,10 +38,12 @@ export default function RootLayout({
         <StoreProvider>
           <AuthProvider>
             <UserProvider>
-              <Toaster />
-              <Navbar />
-              {children}
-              <Footer />
+              <ConfirmProvider>
+                <Toaster />
+                <Navbar />
+                {children}
+                <Footer />
+              </ConfirmProvider>
             </UserProvider>
           </AuthProvider>
         </StoreProvider>

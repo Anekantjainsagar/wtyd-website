@@ -12,6 +12,7 @@ import {
   SetStateAction,
 } from "react";
 import { MemberType } from "@/components/Teams/MemberBlock";
+import { useAuth } from "./AuthContext";
 
 export interface Blog {
   _id: string;
@@ -31,6 +32,9 @@ export interface ProjectType {
 }
 
 export interface UserContextType {
+  myBlogs: Blog[];
+  setMyBlogs: Dispatch<SetStateAction<Blog[]>>;
+
   blogs: Blog[];
   setBlogs: Dispatch<SetStateAction<Blog[]>>;
   getBlogs: () => void;
@@ -51,9 +55,11 @@ export function createMarkupText(content?: string) {
 }
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+  const { user } = useAuth();
   const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [myBlogs, setMyBlogs] = useState<Blog[]>([]);
   const [team, setTeam] = useState<MemberType[]>([]);
+  const [projects, setProjects] = useState<ProjectType[]>([]);
 
   const getTeam = () => {
     axios
@@ -100,11 +106,32 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       });
   };
 
+  const getAllBlogs = () => {
+    axios
+      .get(`${API_URI}/api/v1/users/my-blogs/`, {
+        headers: { Authorization: `Bearer ${getCookie("token")}` },
+      })
+      .then((res) => {
+        if (!res.data.success) {
+          toast.error(res.data.error);
+        } else {
+          setMyBlogs(res.data.data);
+        }
+      })
+      .catch((e) => {
+        toast.error(e.response?.data?.error || "Failed to fetch blogs");
+      });
+  };
+
   useEffect(() => {
     getBlogs();
     getProjects();
     getTeam();
   }, []);
+
+  useEffect(() => {
+    getAllBlogs();
+  }, [user]);
 
   return (
     <UserContext.Provider
@@ -118,6 +145,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         team,
         setTeam,
         getTeam,
+        myBlogs,
+        setMyBlogs,
       }}
     >
       {children}

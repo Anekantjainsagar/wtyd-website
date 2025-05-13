@@ -1,56 +1,39 @@
-import React from "react";
+"use client";
 import Blog from "./Blog";
+import React, { useContext, useState } from "react";
+import AddNewBlog from "./AddNewBlog";
+import UserContext from "@/context/UserContext";
+import { BlogType } from "../Home/blogs/VerticalBlog";
 
-export type BlogStatus = "Pending" | "Uploaded" | "Rejected";
-
-export interface BlogStruct {
-  id: number;
-  title: string;
-  date: string;
-  status: BlogStatus;
-  image: string;
-}
-
-const blogs: BlogStruct[] = [
-  {
-    id: 1,
-    title: "General IoT",
-    date: "12/04/2025",
-    status: "Pending",
-    image: "/assets/home/blog.png",
-  },
-  {
-    id: 2,
-    title: "General IoT",
-    date: "12/04/2025",
-    status: "Uploaded",
-    image: "/assets/home/blog.png",
-  },
-  {
-    id: 3,
-    title: "General IoT",
-    date: "12/04/2025",
-    status: "Rejected",
-    image: "/assets/home/blog.png",
-  },
-  {
-    id: 4,
-    title: "General IoT",
-    date: "12/04/2025",
-    status: "Pending",
-    image: "/assets/home/blog.png",
-  },
-];
+export type BlogStatus = "pending" | "uploaded" | "rejected";
 
 const BlogsDashboard = () => {
+  const context = useContext(UserContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  if (!context) {
+    throw new Error("Blogs must be used within a UserProvider");
+  }
+
+  const { myBlogs } = context;
+
   return (
     <div className="px-[5vw] md:px-[3vw] py-[4vw]">
-      <h3 className="text-blue-700 text-3xl md:text-4xl font-semibold mb-3 md:mb-8">
-        Blogs Dashboard
-      </h3>
+      <AddNewBlog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <div className="mb-3 md:mb-8 flex items-center justify-between">
+        <h3 className="text-newBlue text-3xl md:text-4xl font-semibold">
+          Blogs Dashboard
+        </h3>
+        <button
+          className="text-xl px-6 font-medium py-2 bg-newBlue rounded-lg text-white"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Add Blog
+        </button>
+      </div>
 
       <div className="grid gap-6">
-        {blogs.map((blog, idx) => (
+        {myBlogs.map((blog: BlogType, idx: number) => (
           <Blog key={idx} blog={blog} />
         ))}
       </div>

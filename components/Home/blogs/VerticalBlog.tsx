@@ -1,12 +1,16 @@
+import { BlogStatus } from "@/components/User/BlogsDashboard";
 import { createMarkupText } from "@/context/UserContext";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 export interface BlogType {
+  _id: string;
   coverImage: string;
   title: string;
   content: string;
+  createdAt: string;
+  status: BlogStatus;
 }
 
 const VerticalBlog = ({ coverImage, title, content }: BlogType) => {

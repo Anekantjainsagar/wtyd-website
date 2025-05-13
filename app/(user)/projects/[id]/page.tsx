@@ -67,13 +67,13 @@ const ProductView = () => {
           </p>
         </div>
         <div className="w-full md:w-1/2">
-          <Image
-            src={project?.image || ""}
+         {project?.image&& <Image
+            src={project?.image }
             alt={project?.title || ""}
             width={1000}
             height={1000}
             className="rounded-md h-[25vh] md:h-[45vh] object-cover"
-          />
+          />}
         </div>
       </div>
 

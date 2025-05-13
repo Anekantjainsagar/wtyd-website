@@ -9,11 +9,21 @@ const Signup = () => {
   return user?._id && user?.role == "user" ? (
     <Link href="/user/dashboard">
       <Image
-        src="/assets/members/people.png"
-        alt="User Image"
+        src={user?.avatar}
+        alt={`${user?.name} Image`}
         width={1000}
         height={1000}
         className="w-[3vw] h-[3vw] object-cover object-top rounded-full"
+      />
+    </Link>
+  ) : user?._id && user?.role != "user" ? (
+    <Link href="/admin">
+      <Image
+        src={"/assets/admin.png"}
+        alt={`Admin Image`}
+        width={1000}
+        height={1000}
+        className="border border-gray-200 w-[3vw] h-[3vw] object-cover object-top rounded-full"
       />
     </Link>
   ) : (

@@ -30,15 +30,37 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-    },
-    isVerified: {
-      type: Boolean,
-      default: false,
+      default:
+        "https://res.cloudinary.com/dfk09gblw/image/upload/v1747155671/dgwaqbikrymfsqwj739b.png",
     },
     role: {
       type: String,
       enum: ["user", "admin"],
       default: "user",
+    },
+    mobileNumber: {
+      type: String,
+      trim: true,
+    },
+    profession: {
+      type: String,
+      trim: true,
+    },
+    about: {
+      type: String,
+      trim: true,
+    },
+    gender: {
+      type: String,
+      enum: ["Male", "Female", "Other"],
+    },
+    linkedin: {
+      type: String,
+      trim: true,
+    },
+    github: {
+      type: String,
+      trim: true,
     },
   },
   { timestamps: true }

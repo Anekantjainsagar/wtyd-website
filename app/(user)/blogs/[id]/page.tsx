@@ -49,7 +49,7 @@ const BlogPageSingle = () => {
         {blog?.title}
       </h4>
       <Image
-        src={blog?.coverImage || ""}
+        src={blog?.coverImage }
         alt={blog?.title || "Blog Cover image"}
         width={1000}
         height={1000}
