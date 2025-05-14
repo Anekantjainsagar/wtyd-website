@@ -6,13 +6,13 @@ import { getCookie } from "@/utils/cookies";
 import { Editor } from "@tinymce/tinymce-react";
 import UserContext from "@/context/UserContext";
 import toast, { Toaster } from "react-hot-toast";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
-const AddNewBlog = ({ isOpen, onClose }) => {
+const UpdateBlog = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
 
   const editorRef = useRef(null);
-  const { setMyBlogs, myBlogs } = useContext(UserContext);
+  const { setMyBlogs } = useContext(UserContext);
 
   const [product, setProduct] = useState({ title: "" });
   const [image, setImage] = useState("");
@@ -62,8 +62,8 @@ const AddNewBlog = ({ isOpen, onClose }) => {
 
     setSavingBlog(true);
     try {
-      const res = await axios.post(
-        `${API_URI}/api/v1/users/my-blogs/`,
+      const res = await axios.put(
+        `${API_URI}/api/v1/users/my-blogs/${data?._id}`,
         {
           coverImage: image,
           title: product?.title.trim(),
@@ -76,9 +76,20 @@ const AddNewBlog = ({ isOpen, onClose }) => {
         }
       );
 
-      if (res.status === 201) {
-        setMyBlogs([...myBlogs, res.data.data]);
-        toast.success("Blog added successfully!");
+      if (res.status === 200) {
+        setMyBlogs((prevBlogs) =>
+          prevBlogs.map((blog) =>
+            blog?._id === data?._id
+              ? {
+                  ...blog,
+                  coverImage: image,
+                  title: product.title,
+                  content,
+                }
+              : blog
+          )
+        );
+        toast.success("Blog updated successfully!");
         onClose();
       }
     } catch (err) {
@@ -89,13 +100,24 @@ const AddNewBlog = ({ isOpen, onClose }) => {
     }
   };
 
+  useEffect(() => {
+    setImage(data?.coverImage);
+    setProduct({ title: data?.title });
+    const interval = setInterval(() => {
+      if (editorRef.current) {
+        editorRef.current.setContent(data?.content || "");
+        clearInterval(interval);
+      }
+    }, 100);
+  }, [data]);
+
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-30 flex items-center justify-center px-4">
       <div className="h-[90vh] overflow-y-auto bg-white p-5 rounded-2xl">
         <Toaster />
         <div className="w-full flex items-center justify-between mb-4">
           <h1 className="text-3xl font-bold cursor-pointer gradientHover w-fit text-newBlue">
-            Add New Blog
+            Update Blog
           </h1>{" "}
           <button
             onClick={onClose}
@@ -186,4 +208,4 @@ const AddNewBlog = ({ isOpen, onClose }) => {
   );
 };
 
-export default AddNewBlog;
+export default UpdateBlog;

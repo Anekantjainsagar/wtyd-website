@@ -22,7 +22,7 @@ const AdminPage = () => {
   return (
     <div className="bg-gray-100 p-4 h-[90vh] overflow-y-auto">
       <UserReport />
-      <div className="bg-white border rounded-md pt-4 shadow-md shadow-gray-200">
+      {/* <div className="bg-white border rounded-md pt-4 shadow-md shadow-gray-200">
         <p className="text-black font-bold px-4 border-b pb-2">
           All Products ({productM?.productData?.length})
         </p>
@@ -47,8 +47,8 @@ const AdminPage = () => {
               );
             })}
           </Swiper>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

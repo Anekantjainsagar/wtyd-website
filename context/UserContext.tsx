@@ -99,20 +99,23 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const getAllBlogs = () => {
-    axios
-      .get(`${API_URI}/api/v1/users/my-blogs/`, {
-        headers: { Authorization: `Bearer ${getCookie("token")}` },
-      })
-      .then((res) => {
-        if (!res.data.success) {
-          toast.error(res.data.error);
-        } else {
-          setMyBlogs(res.data.data);
-        }
-      })
-      .catch((e) => {
-        toast.error(e.response?.data?.error || "Failed to fetch blogs");
-      });
+    if (user?.role == "user") {
+      axios
+        .get(`${API_URI}/api/v1/users/my-blogs/`, {
+          headers: { Authorization: `Bearer ${getCookie("token")}` },
+        })
+        .then((res) => {
+          if (!res.data.success) {
+            toast.error(res.data.error);
+          } else {
+            setMyBlogs(res.data.data);
+          }
+        })
+        .catch((e) => {
+          console.log(e?.response);
+          // toast.error(e.response?.data?.error || "Failed to fetch blogs");
+        });
+    }
   };
 
   useEffect(() => {

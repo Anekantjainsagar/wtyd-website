@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
-import Image from "next/image";
-import { GoPencil } from "react-icons/go";
-import { MdOutlineDelete } from "react-icons/md";
-import { BlogStatus } from "./BlogsDashboard";
-import { BlogType } from "../Home/blogs/VerticalBlog";
 import axios from "axios";
+import Image from "next/image";
 import API_URI from "@/utils/url";
-import { getCookie } from "@/utils/cookies";
-import { useConfirm } from "@/app/(admin)/Components/Utils/ConfirmProvier";
-import UserContext from "@/context/UserContext";
 import toast from "react-hot-toast";
-import { AiOutlineEye } from "react-icons/ai";
+import UpdateBlog from "./UpdateBlog";
+import { GoPencil } from "react-icons/go";
 import { useRouter } from "next/navigation";
+import { getCookie } from "@/utils/cookies";
+import { AiOutlineEye } from "react-icons/ai";
+import { BlogStatus } from "./BlogsDashboard";
+import UserContext from "@/context/UserContext";
+import { MdOutlineDelete } from "react-icons/md";
+import React, { useContext, useState } from "react";
+import { BlogType } from "../Home/blogs/VerticalBlog";
+import { useConfirm } from "@/app/(admin)/Components/Utils/ConfirmProvier";
 
 const getStatusColor = (status: BlogStatus) => {
   switch (status) {
@@ -26,17 +27,18 @@ const getStatusColor = (status: BlogStatus) => {
   }
 };
 
-const getButtonClasses = (status: BlogStatus) => {
+const getButtonClasses = () => {
   const common =
     "px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full text-white font-semibold md:text-lg";
-  if (status === "pending") return `${common} bg-newBlue hover:bg-newBlue/80`;
-  return `${common} bg-gray-400 cursor-not-allowed`;
+  return `${common} bg-newBlue hover:bg-newBlue/80`;
 };
 
 const Blog = ({ blog }: { blog: BlogType }) => {
   const router = useRouter();
   const { requestConfirm } = useConfirm();
   const context = useContext(UserContext);
+  const [selectedBlog, setSelectedBlog] = useState<BlogType>();
+  const [isModalOpenUpdate, setIsModalOpenUpdate] = useState(false);
 
   if (!context) {
     throw new Error("Blogs must be used within a UserProvider");
@@ -70,6 +72,11 @@ const Blog = ({ blog }: { blog: BlogType }) => {
       className="bg-white relative grid shadow-md rounded-xl p-4 md:flex-row flex-col items-center justify-between"
       style={{ gridTemplateColumns: "40% 25% 35%" }}
     >
+      <UpdateBlog
+        isOpen={isModalOpenUpdate}
+        onClose={() => setIsModalOpenUpdate(false)}
+        data={selectedBlog}
+      />
       <div className="flex md:flex-row flex-col items-center gap-2 md:gap-6">
         <Image
           src={blog.coverImage}
@@ -120,7 +127,13 @@ const Blog = ({ blog }: { blog: BlogType }) => {
             <AiOutlineEye className="text-lg md:text-2xl" /> View Blog
           </button>
         )}
-        <button className={getButtonClasses(blog.status)}>
+        <button
+          className={getButtonClasses()}
+          onClick={() => {
+            setIsModalOpenUpdate(true);
+            setSelectedBlog(blog);
+          }}
+        >
           <GoPencil className="md:text-xl" /> Edit Blog
         </button>
 

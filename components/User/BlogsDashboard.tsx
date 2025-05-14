@@ -1,8 +1,8 @@
 "use client";
 import Blog from "./Blog";
-import React, { useContext, useState } from "react";
 import AddNewBlog from "./AddNewBlog";
 import UserContext from "@/context/UserContext";
+import React, { useContext, useState } from "react";
 import { BlogType } from "../Home/blogs/VerticalBlog";
 
 export type BlogStatus = "pending" | "uploaded" | "rejected";
@@ -20,6 +20,7 @@ const BlogsDashboard = () => {
   return (
     <div className="px-[5vw] md:px-[3vw] py-[4vw]">
       <AddNewBlog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      
       <div className="mb-3 md:mb-8 flex items-center justify-between">
         <h3 className="text-newBlue text-3xl md:text-4xl font-semibold">
           Blogs Dashboard
