@@ -55,7 +55,10 @@ const BlogPageSingle = () => {
         {blog?.title}
       </h4>
       <Image
-        src={blog?.coverImage}
+        src={
+          blog?.coverImage ||
+          "https://static.vecteezy.com/system/resources/thumbnails/000/664/438/small/Technologyab23.jpg"
+        }
         alt={blog?.title || "Blog Cover image"}
         width={1000}
         height={1000}
