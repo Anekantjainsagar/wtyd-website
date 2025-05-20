@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEllipsisV, FaThumbsUp, FaComment } from "react-icons/fa";
+import { FaEllipsisV } from "react-icons/fa";
 
 const FeedbackCard = ({
   header,
@@ -28,7 +28,9 @@ const FeedbackCard = ({
         </div>
         <FaEllipsisV className="text-gray-500 cursor-pointer" />
       </div>
-      <h6 className="text-xl md:text-2xl font-semibold text-newBlue mb-0.5">{title}</h6>
+      <h6 className="text-xl md:text-2xl font-semibold text-newBlue mb-0.5">
+        {title}
+      </h6>
       <p className="text-gray-600 text-base mb-3">{subtitle}</p>
       <p className="text-newGrey text-lg mb-4">{description}</p>
     </div>
