@@ -16,6 +16,7 @@ const initialState: NavItemsArray = {
     { title: "Projects", route: "/projects" },
     { title: "Blogs", route: "/blogs" },
     { title: "Our Team", route: "/team" },
+    { title: "Contact Us", route: "/contact" },
   ],
 };
 

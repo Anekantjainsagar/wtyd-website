@@ -58,10 +58,13 @@ const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <div className="relative bg-[#FAF8FF] px-[5vw] md:px-[6vw] py-[10vw] md:py-[4vw]">
-      <h1 className="text-3xl md:text-5xl font-semibold text-center">Our Courses</h1>
-      <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] text-center">
-        We provide end-to-end software and mobile application development
-        services.
+      <h1 className="text-3xl md:text-5xl font-semibold text-center">
+        Future-Ready Courses Designed by Experts
+      </h1>
+      <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] text-center md:w-10/12 md:mx-auto">
+        Enhance your career with industry-relevant courses in Node.js, Flutter,
+        Android Studio, and more—designed to give you practical skills and
+        job-ready expertise.
       </p>
 
       <div

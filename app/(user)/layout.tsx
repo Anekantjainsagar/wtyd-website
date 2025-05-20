@@ -21,8 +21,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wtyd - We Tech Your Dreams",
-  description: "Learn. Build. Succeed. - Your Tech Journey Starts Here!",
+  title: "Custom Software & Mobile App Development | WTYD",
+  description:
+    "WTYD offers expert software and mobile app development services, providing tailored solutions to drive your business forward.",
+  keywords: [
+    "Software development",
+    "Mobile app development",
+    "Web development",
+    "IT services",
+    "Tech courses",
+    "Node.js",
+    "Flutter",
+    "Android Studio",
+  ],
 };
 
 export default function RootLayout({

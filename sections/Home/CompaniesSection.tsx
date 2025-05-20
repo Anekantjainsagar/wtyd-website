@@ -5,7 +5,7 @@ const CompaniesSection = () => {
   return (
     <div className="flex md:flex-row flex-col md:items-center px-[5vw] md:px-[3vw] justify-between w-full py-8 md:py-7">
       <p className="text-newGrey md:w-2/12 text-lg md:text-xl">
-        Trusted by 100+ company Worldwide
+        Backed by 100+ Global Businesses
       </p>
       <div className="h-[90px] w-[1px] bg-newGrey md:block hidden"></div>
       <div className="flex items-center justify-between md:w-9/12 md:mt-0 mt-4">

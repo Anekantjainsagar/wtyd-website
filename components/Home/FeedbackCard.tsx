@@ -31,16 +31,6 @@ const FeedbackCard = ({
       <h6 className="text-xl md:text-2xl font-semibold text-newBlue mb-0.5">{title}</h6>
       <p className="text-gray-600 text-base mb-3">{subtitle}</p>
       <p className="text-newGrey text-lg mb-4">{description}</p>
-      <div className="flex items-center justify-end space-x-8">
-        <button className="flex items-center text-lg text-gray-500 hover:text-newBlue focus:outline-none">
-          <FaComment className="mr-1.5" />
-          <span className="text-base">Comment</span>
-        </button>
-        <button className="flex items-center text-lg text-gray-500 hover:text-blue-600 focus:outline-none">
-          <FaThumbsUp className="mr-1.5" />
-          <span className="text-base">Like</span>
-        </button>
-      </div>
     </div>
   );
 };

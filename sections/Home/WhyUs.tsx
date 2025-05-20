@@ -12,7 +12,7 @@ const WhyUs = () => {
     {
       title: "Skill Enhancement",
       description:
-        "Offers a variety of courses to upskill learners in trending technologies. Provides recognized certificates to boost resumes.",
+        "Offers a variety of courses to upskill learners in trending technologies.",
       imageUrl: "/assets/home/02_why/1.png",
     },
     {
@@ -23,8 +23,7 @@ const WhyUs = () => {
     },
     {
       title: "Relevant Projects",
-      description:
-        "Offers a variety of courses to upskill learners in trending technologies. Provides recognized certificates to boost resumes.",
+      description: "Engage in real-world projects that enhance your portfolio.",
       imageUrl: "/assets/home/02_why/3.png",
     },
   ];
@@ -35,8 +34,10 @@ const WhyUs = () => {
         <h2 className="text-2xl md:text-4xl font-semibold text-newBlue mb-2">
           Why Choose wtyd?
         </h2>
-        <p className="text-newGrey md:text-xl mt-1 md:mt-2">
-          Your dream tech career starts here - Upgrade your skills today!
+        <p className="text-newGrey md:text-xl mt-1 md:mt-2 md:w-10/12">
+          A Tech Partner That Understands Growth - From strategic consulting to
+          final deployment, we deliver technology solutions that align with your
+          business goals and scale with your vision.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

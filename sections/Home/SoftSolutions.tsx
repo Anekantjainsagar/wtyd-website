@@ -13,8 +13,8 @@ const SoftSolutions = () => {
         </div>
 
         <div className="md:w-1/2 text-center md:text-left h-full">
-          <h2 className="text-3xl md:text-5xl font-medium text-black mb-2 md:mb-4">
-            International Software Solutions
+          <h2 className="text-3xl md:text-5xl leading-loose font-medium text-black mb-2 md:mb-4">
+            Custom Software to Meet Global Business Challenges{" "}
           </h2>
           <p className="text-newGrey md:text-xl mb-4 md:mb-8 tracking-wide md:w-11/12">
             Our international software solutions are designed to cater to

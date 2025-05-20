@@ -14,12 +14,12 @@ const GlobalITServices = () => {
 
         <div className="md:w-1/2 text-center md:text-left h-full">
           <h2 className="text-3xl md:text-5xl font-medium text-black mb-2 md:mb-4">
-            Global IT Services
+            Serving Clients Across the Globe{" "}
           </h2>
           <p className="text-newGrey md:text-xl mb-5 md:mb-8 tracking-wide md:w-11/12">
             We cater to global clients, adapting to cultural and market needs.
             From iOS app development in Canada to web solutions in Germany and
-            custom software in the UAE, we deliver tailored services worldwide.
+            custom software in the UAE, we deliver tailored services worldwide.{" "}
           </p>
           <div className="bg-newBlue text-white md:text-lg font-medium py-2 px-6 rounded-md inline-block cursor-pointer">
             Learn more
