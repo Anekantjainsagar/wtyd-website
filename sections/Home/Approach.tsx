@@ -43,7 +43,7 @@ const Approach = () => {
 
   return (
     <div className="py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw] bg-white">
-      <h2 className="text-3xl md:text-5xl text-start font-semibold mb-2 md:mb-5">
+      <h2 className="text-3xl md:text-5xl text-start font-semibold mb-2 md:mb-5" id="approach">
         Structured Process, Measurable Results
       </h2>
       <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] md:text-start text-center">

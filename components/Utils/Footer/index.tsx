@@ -37,37 +37,24 @@ const Footer = () => {
   const quickLinks: FooterSection = {
     title: "QUICK LINKS",
     links: [
-      { text: "Feedback", route: "/" },
-      { text: "Emergency", route: "/" },
-      { text: "Our Team", route: "/" },
-      { text: "Contact us", route: "/" },
-    ],
-  };
-
-  const trustLegal: FooterSection = {
-    title: "TRUST & LEGAL",
-    links: [
-      { text: "Terms & Conditions", route: "/" },
-      { text: "Cookie Notice", route: "/" },
-      { text: "Cookie Preferences", route: "/" },
-      { text: "Privacy Notice", route: "/" },
+      { text: "Why Us?", route: "/#why-us" },
+      { text: "Approach", route: "/#approach" },
+      { text: "Feedback", route: "/#feedback" },
     ],
   };
 
   const resources: FooterSection = {
     title: "RESOURCES",
     links: [
-      { text: "FAQs", route: "/" },
-      { text: "Articles & Links", route: "/" },
-      { text: "About us", route: "/" },
-      { text: "Contact us", route: "/" },
+      { text: "About us", route: "/about" },
+      { text: "Our Team", route: "/team" },
+      { text: "Contact us", route: "/contact" },
     ],
   };
 
   const sections: FooterSection[] = [
     aboutInfo,
     quickLinks,
-    trustLegal,
     resources,
   ];
 

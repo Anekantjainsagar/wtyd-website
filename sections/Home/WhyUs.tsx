@@ -31,7 +31,7 @@ const WhyUs = () => {
   return (
     <div className="bg-[#FAF8FF] py-[10vw] md:py-[5vw] px-[5vw] md:px-[3vw]">
       <div className="mb-8">
-        <h2 className="text-2xl md:text-4xl font-semibold text-newBlue mb-2">
+        <h2 className="text-2xl md:text-4xl font-semibold text-newBlue mb-2" id="why-us">
           Why Choose wtyd?
         </h2>
         <p className="text-newGrey md:text-xl mt-1 md:mt-2 md:w-10/12">

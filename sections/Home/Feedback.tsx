@@ -85,11 +85,13 @@ const Feedback = () => {
         "They took QA seriously—every bug we reported was fixed in no time. The final product was well-tested, polished, and ready to deploy.",
     },
   ];
-  
 
   return (
     <div className="bg-[#FAF8FF] py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
-      <h2 className="text-3xl md:text-5xl font-semibold mb-2 md:mb-5">
+      <h2
+        className="text-3xl md:text-5xl font-semibold mb-2 md:mb-5"
+        id="feedback"
+      >
         What Our Clients Say
       </h2>
       <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] md:text-start text-center">

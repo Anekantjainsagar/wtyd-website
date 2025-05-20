@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const LandingSection = () => {
   return (
@@ -13,12 +14,16 @@ const LandingSection = () => {
           technology solutions and skill development programs.
         </p>
         <div className="md:mt-0 mt-5">
-          <button className="px-6 py-1.5 md:py-2 text-newBlue border-2 border-white bg-white rounded-md text-lg md:text-xl font-medium">
-            Get Started
-          </button>
-          <button className="ml-3.5 md:ml-5 px-6 py-1.5 md:py-2 text-white border-2 border-white rounded-md text-lg md:text-xl font-medium">
-            Learn more
-          </button>
+          <Link href="/login">
+            <button className="px-6 py-1.5 md:py-2 text-newBlue border-2 border-white bg-white rounded-md text-lg md:text-xl font-medium">
+              Get Started
+            </button>
+          </Link>
+          <Link href="/about">
+            <button className="ml-3.5 md:ml-5 px-6 py-1.5 md:py-2 text-white border-2 border-white rounded-md text-lg md:text-xl font-medium">
+              Learn more
+            </button>
+          </Link>
         </div>
       </div>
       <div className="md:w-[52vw] flex flex-col items-end justify-end md:absolute right-0 bottom-0 md:mt-0 mt-16">
