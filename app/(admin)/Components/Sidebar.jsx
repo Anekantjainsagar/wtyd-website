@@ -68,7 +68,7 @@ const Sidebar = () => {
       ],
     },
     {
-      name: "Partners",
+      name: "Queries",
       icon: <FaUserGroup size={20} className="mr-2 pb-0.5" />,
       route: "/admin/partners",
     },
