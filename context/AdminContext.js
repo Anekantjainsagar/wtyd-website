@@ -20,6 +20,7 @@ export const AdminProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([]);
   const [projects, setProjects] = useState([]);
   const [team, setTeam] = useState([]);
+  const [contacts, setContacts] = useState([]);
 
   const getTeam = () => {
     let token = getCookie("token");
@@ -121,6 +122,24 @@ export const AdminProvider = ({ children }) => {
       });
   };
 
+  const getAllContacts = () => {
+    let token = getCookie("token");
+
+    axios
+      .get(`${API_URI}/api/v1/admin/contact`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        if (!res.data.success) {
+          toast.error(res.data.error);
+        }
+        setContacts(res.data.data);
+      })
+      .catch((e) => {
+        toast.error(e.response.data.error);
+      });
+  };
+
   useEffect(() => {
     if (!users.length) return;
 
@@ -170,6 +189,7 @@ export const AdminProvider = ({ children }) => {
     getAllUsers();
     getBlogs();
     getProjects();
+    getAllContacts();
     getTeam();
   }, []);
 
@@ -193,6 +213,8 @@ export const AdminProvider = ({ children }) => {
         team,
         setTeam,
         getTeam,
+        contacts,
+        getAllContacts,
       }}
     >
       {children}
