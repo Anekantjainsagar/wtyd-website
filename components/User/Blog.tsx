@@ -27,11 +27,11 @@ const getStatusColor = (status: BlogStatus) => {
   }
 };
 
-const getButtonClasses = () => {
-  const common =
-    "px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full text-white font-semibold md:text-lg";
-  return `${common} bg-newBlue hover:bg-newBlue/80`;
-};
+// const getButtonClasses = () => {
+//   const common =
+//     "px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full text-white font-semibold md:text-lg";
+//   return `${common} bg-newBlue hover:bg-newBlue/80`;
+// };
 
 const Blog = ({ blog }: { blog: BlogType }) => {
   const router = useRouter();
