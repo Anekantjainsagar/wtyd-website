@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import InputField from "@/components/Login/InputField";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,6 +17,7 @@ const LoginSchema = Yup.object().shape({
 export default function LoginPage() {
   const { login, getMe } = useAuth();
   const router = useRouter();
+  const [hasSubmitted, setHasSubmitted] = useState(false); // 👈 NEW STATE
 
   const formik = useFormik({
     initialValues: {
@@ -25,15 +26,12 @@ export default function LoginPage() {
     },
     validationSchema: LoginSchema,
     onSubmit: async (values) => {
+      setHasSubmitted(true); // 👈 SET onSubmit
       const res = await login(values.email, values.password);
       if (res.success) {
         toast.success("Login Successfully");
-        if (res.role == "user") {
-          router.push("/user/dashboard");
-        } else {
-          router.push("/admin");
-        }
         getMe();
+        router.push(res.role === "user" ? "/user/dashboard" : "/admin");
       } else {
         toast.error(res.message || "Login failed.");
       }
@@ -41,6 +39,7 @@ export default function LoginPage() {
   });
 
   useEffect(() => {
+    if (!hasSubmitted) return; // 👈 ONLY show toast after submit
     if (
       formik.errors.email &&
       formik.touched.email &&
@@ -55,10 +54,10 @@ export default function LoginPage() {
     ) {
       toast.error(formik.errors.password);
     }
-  }, [formik.errors, formik.touched]);
+  }, [formik.errors, formik.touched, hasSubmitted]);
 
   return (
-    <div className="h-[100vh] flex-col lg:flex-row bg-newBlue flex items-center justify-center">
+    <div className="h-[115vh] md:h-[100vh] flex-col lg:flex-row bg-white md:bg-newBlue flex items-center justify-center">
       {/* Left */}
       <div className="lg:w-1/2 h-full hidden md:flex items-center justify-center">
         <Image
@@ -72,7 +71,9 @@ export default function LoginPage() {
 
       {/* Right */}
       <div className="lg:w-1/2 h-[100vh] w-full px-[5vw] md:px-16 pb-8 md:pb-12 pt-[8vw] bg-white flex flex-col items-center justify-center">
-        <h2 className="text-3xl md:text-[45px] font-semibold mb-2 w-full">Login</h2>
+        <h2 className="text-3xl md:text-[45px] font-semibold mb-2 w-full">
+          Login
+        </h2>
         <p className="text-newGrey md:text-lg mb-6 w-full">
           Welcome back and get started
         </p>
@@ -115,7 +116,7 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          <div className="my-10 border-t border-gray-300" />
+          <div className="my-6 md:my-10 border-t border-gray-300" />
 
           <button
             type="button"
@@ -130,7 +131,7 @@ export default function LoginPage() {
             <span>Sign in with Google</span>
           </button>
 
-          <p className="text-center mt-6 text-lg">
+          <p className="text-center mt-2 md:mt-6 text-lg">
             Don&apos;t have an account?{" "}
             <Link href="/register" className="text-blue-600 font-semibold">
               Signup

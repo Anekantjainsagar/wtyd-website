@@ -43,7 +43,7 @@ const Approach = () => {
 
   return (
     <div className="py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw] bg-white">
-      <h2 className="text-3xl md:text-5xl text-start font-semibold mb-2 md:mb-5" id="approach">
+      <h2 className="text-3xl md:text-5xl text-center md:text-start font-semibold mb-2 md:mb-5" id="approach">
         Structured Process, Measurable Results
       </h2>
       <p className="text-lg md:text-2xl text-newGrey mt-2 mb-[2.5vw] md:text-start text-center">
@@ -51,7 +51,7 @@ const Approach = () => {
         development and deployment—to ensure quality and alignment at every
         step.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-6 md:mt-0 mt-6">
         {approachSteps.map((step, index) => (
           <div
             key={index}
@@ -60,7 +60,7 @@ const Approach = () => {
             <div className="bg-newBlue text-6xl w-[20vw] md:w-4/12 h-[20vw] md:h-[8vw] text-white flex items-center justify-center rounded-md p-3">
               <GoGitBranch />
             </div>
-            <div className="w-8/12">
+            <div className="md:w-8/12">
               <h3
                 className={`text-xl md:text-2xl font-semibold text-black mb-1 md:mb-2`}
               >

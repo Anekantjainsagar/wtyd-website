@@ -89,7 +89,7 @@ const Feedback = () => {
   return (
     <div className="bg-[#FAF8FF] py-[10vw] md:py-[4vw] px-[5vw] md:px-[3vw]">
       <h2
-        className="text-3xl md:text-5xl font-semibold mb-2 md:mb-5"
+        className="text-3xl md:text-5xl md:text-start text-center font-semibold mb-2 md:mb-5"
         id="feedback"
       >
         What Our Clients Say

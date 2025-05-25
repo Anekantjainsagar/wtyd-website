@@ -31,7 +31,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ onClose }) => {
       </div>
 
       {/* Auth Button */}
-      <div className="mt-6" onClick={onClose}>
+      <div onClick={onClose}>
         <Signup />
       </div>
     </motion.div>

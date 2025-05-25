@@ -22,11 +22,11 @@ const BlogsDashboard = () => {
       <AddNewBlog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       
       <div className="mb-3 md:mb-8 flex items-center justify-between">
-        <h3 className="text-newBlue text-3xl md:text-4xl font-semibold">
+        <h3 className="text-newBlue text-2xl md:text-4xl font-semibold">
           Blogs Dashboard
         </h3>
         <button
-          className="text-xl px-6 font-medium py-2 bg-newBlue rounded-lg text-white"
+          className="md:text-xl px-6 font-medium py-1.5 md:py-2 bg-newBlue rounded-lg text-white"
           onClick={() => setIsModalOpen(true)}
         >
           Add Blog

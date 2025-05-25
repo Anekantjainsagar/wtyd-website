@@ -40,7 +40,7 @@ const WhyUs = () => {
           business goals and scale with your vision.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {features.map((feature, index) => (
           <div
             key={index}
@@ -53,7 +53,7 @@ const WhyUs = () => {
               alt={feature.title}
               className="h-[30vw] md:h-[8vw] w-fit object-contain"
             />
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-2">
+            <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-1">
               {feature.title}
             </h3>
             <p className="text-newGrey md:text-lg">{feature.description}</p>

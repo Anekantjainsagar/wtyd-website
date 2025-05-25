@@ -3,20 +3,20 @@ import React from "react";
 
 const AboutWTYD = () => {
   return (
-    <div className="bg-white min-h-screen pt-[18vw] md:pt-[8vw] px-[5vw] md:px-[3vw]">
-      <div className="space-y-12">
+    <div className="bg-white min-h-screen pt-[22vw] md:pt-[8vw] px-[5vw] md:px-[3vw] md:pb-0 pb-[14vw]">
+      <div className="space-y-8 md:space-y-12">
         {/* Header */}
         <header className="">
-          <h1 className="text-4xl md:text-6xl text-newBlue font-bold mb-2">
+          <h1 className="text-3xl md:text-6xl text-newBlue font-bold mb-2">
             WTYD (What The Youth Deserves)
           </h1>
-          <p className="text-xl md:text-2xl font-light italic">
+          <p className="text-lg md:text-2xl font-light italic">
             Empowering Innovation, Educating the Future
           </p>
         </header>
 
         {/* Intro Paragraph */}
-        <section className="text-lg md:text-xl leading-relaxed  mx-auto">
+        <section className="text-lg md:text-xl leading-relaxed mx-auto">
           <p>
             At WTYD, we are more than just a tech company—we are a movement
             dedicated to bridging the gap between innovation and opportunity.
@@ -35,15 +35,19 @@ const AboutWTYD = () => {
         {/* Vision & Mission */}
         <section className=" mx-auto space-y-8">
           <div>
-            <h2 className="text-3xl font-semibold mb-4 text-newBlue">Our Vision</h2>
+            <h2 className="text-3xl font-semibold mb-1 md:mb-4 text-newBlue">
+              Our Vision
+            </h2>
             <p className="text-lg leading-relaxed">
               To become a global hub where innovation meets opportunity—helping
               individuals and businesses transform ideas into impact
             </p>
           </div>
           <div>
-            <h2 className="text-3xl font-semibold mb-4 text-newBlue">Our Mission</h2>
-            <ul className="list-disc list-inside space-y-2 text-lg leading-relaxed">
+            <h2 className="text-3xl font-semibold mb-1 md:mb-4 text-newBlue">
+              Our Mission
+            </h2>
+            <ul className="list-disc list-inside space-y-1 md:space-y-2 text-lg leading-relaxed">
               <li>
                 To build reliable, scalable, and future-ready tech solutions
               </li>
@@ -61,9 +65,11 @@ const AboutWTYD = () => {
 
         {/* Who We Serve */}
         <section className=" mx-auto">
-          <h2 className="text-3xl font-semibold mb-4 text-newBlue">Who We Serve</h2>
-          <p className="text-lg mb-4">We collaborate with:</p>
-          <ul className="list-disc list-inside space-y-2 text-lg leading-relaxed">
+          <h2 className="text-3xl font-semibold mb-1 md:mb-4 text-newBlue">
+            Who We Serve
+          </h2>
+          <p className="text-lg mb-1 md:mb-4">We collaborate with:</p>
+          <ul className="list-disc list-inside space-y-1 md:space-y-2 text-lg leading-relaxed">
             <li>Startups looking to build MVPs or scale fast</li>
             <li>Enterprises seeking enterprise-grade digital transformation</li>
             <li>
@@ -76,7 +82,9 @@ const AboutWTYD = () => {
 
         {/* What Sets Us Apart */}
         <section className=" mx-auto">
-          <h2 className="text-3xl font-semibold mb-4 text-newBlue">What Sets Us Apart</h2>
+          <h2 className="text-3xl font-semibold mb-1 md:mb-4 text-newBlue">
+            What Sets Us Apart
+          </h2>
           <ul className="list-disc list-inside space-y-3 text-lg leading-relaxed">
             <li>
               <strong>End-to-End Services:</strong> From ideation to deployment
@@ -103,8 +111,10 @@ const AboutWTYD = () => {
 
         {/* Expertise */}
         <section className=" mx-auto">
-          <h2 className="text-3xl font-semibold mb-4 text-newBlue">Our Expertise</h2>
-          <ul className="list-disc list-inside space-y-2 text-lg leading-relaxed">
+          <h2 className="text-3xl font-semibold mb-1 md:mb-4 text-newBlue">
+            Our Expertise
+          </h2>
+          <ul className="list-disc list-inside space-y-1 md:space-y-2 text-lg leading-relaxed">
             <li>Mobile App Development (Android / Flutter / iOS)</li>
             <li>Full-Stack Web Development (MERN)</li>
             <li>UI/UX Design & Prototyping</li>

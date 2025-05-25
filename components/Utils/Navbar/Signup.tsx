@@ -13,7 +13,7 @@ const Signup = () => {
         alt={`${user?.name} Image`}
         width={1000}
         height={1000}
-        className="w-[3vw] h-[3vw] object-cover object-top rounded-full"
+        className="w-[14vw] h-[14vw] md:w-[3vw] md:h-[3vw] object-cover object-top rounded-full"
       />
     </Link>
   ) : user?._id && user?.role != "user" ? (
@@ -23,7 +23,7 @@ const Signup = () => {
         alt={`Admin Image`}
         width={1000}
         height={1000}
-        className="border border-gray-200 w-[3vw] h-[3vw] object-cover object-top rounded-full"
+        className="border border-gray-200 w-[14vw] h-[14vw] md:w-[3vw] md:h-[3vw] object-cover object-top rounded-full"
       />
     </Link>
   ) : (

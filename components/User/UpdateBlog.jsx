@@ -137,7 +137,7 @@ const UpdateBlog = ({ isOpen, onClose, data }) => {
           />
 
           <Editor
-            apiKey="b887tqysd247td71uhou47927s7mrfwtpciezsx7sndajlol"
+            apiKey="s89tnfhgswa50wktxa85cxrbn8ltk43yruhoqevvpqa6s0b2"
             onInit={(evt, editor) => (editorRef.current = editor)}
             init={{
               height: 500,

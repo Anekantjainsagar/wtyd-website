@@ -71,7 +71,7 @@ export default function RegisterPage() {
   }, [formik.errors, formik.touched]);
 
   return (
-    <div className="h-[100vh] flex-col lg:flex-row bg-newBlue flex items-center justify-center">
+    <div className="h-[115vh] md:h-[100vh] flex-col lg:flex-row bg-white md:bg-newBlue flex items-center justify-center">
       {/* Left */}
       <div className="lg:w-1/2 h-full hidden md:flex items-center justify-center">
         <Image
@@ -88,7 +88,7 @@ export default function RegisterPage() {
         <h2 className="text-3xl md:text-[45px] font-semibold mb-2 w-full">
           Create Account
         </h2>
-        <p className="text-newGrey md:text-lg mb-6 w-full">
+        <p className="text-newGrey md:text-lg mb-4 md:mb-6 w-full">
           Register and get started
         </p>
 
@@ -140,7 +140,7 @@ export default function RegisterPage() {
             {loading ? "Signing up..." : "Signup"}
           </button>
 
-          <div className="my-10 border-t border-gray-300" />
+          <div className="my-6 md:my-10 border-t border-gray-300" />
 
           <button
             type="button"
@@ -155,7 +155,7 @@ export default function RegisterPage() {
             <span>Sign in with Google</span>
           </button>
 
-          <p className="text-center mt-6 text-lg">
+          <p className="text-center mt-3 md:mt-6 text-lg">
             Already have an account?{" "}
             <Link href="/login" className="text-blue-600 font-semibold">
               Login

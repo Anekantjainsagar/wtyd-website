@@ -69,7 +69,7 @@ const Blog = ({ blog }: { blog: BlogType }) => {
 
   return (
     <div
-      className="bg-white relative grid shadow-md rounded-xl p-4 md:flex-row flex-col items-center justify-between"
+      className="bg-white relative flex md:grid shadow-md rounded-xl p-3 md:p-4 md:flex-row flex-col items-center justify-between"
       style={{ gridTemplateColumns: "40% 25% 35%" }}
     >
       <UpdateBlog
@@ -83,19 +83,19 @@ const Blog = ({ blog }: { blog: BlogType }) => {
           alt={blog.title}
           width={1000}
           height={1000}
-          className="rounded-xl md:w-[20vw] w-[20vw] object-cover"
+          className="rounded-xl md:w-[20vw] w-full object-cover"
         />
         <div className="w-full">
           <p className="font-medium text-start text-2xl md:text-3xl w-full">
             {blog.title?.slice(0, 20) + (blog?.title?.length > 20 ? "..." : "")}
           </p>
-          <p className="text-gray-600 text-lg mt-1.5 md:mt-2">
+          <p className="text-gray-600 text-lg mt-1 md:mt-2">
             {new Date(blog.createdAt).toString().slice(4, 16)}
           </p>
         </div>
       </div>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center md:mt-0 mt-1">
         <div className="flex items-center gap-1.5 md:gap-2.5 md:static absolute top-6 right-6 bg-white md:border-0 border border-gray-300 md:rounded-none rounded-full md:py-0 py-1 md:px-0 px-2">
           <span
             className={`w-2 md:w-4 h-2 md:h-4 rounded-full ${getStatusColor(
@@ -108,7 +108,7 @@ const Blog = ({ blog }: { blog: BlogType }) => {
         </div>
       </div>
 
-      <div className="flex items-center justify-end gap-4 md:gap-5 md:mt-0 mt-3">
+      <div className="flex flex-col md:flex-row items-center justify-end gap-3 md:gap-5 md:mt-0 mt-3 w-full md:w-auto">
         {blog?.status === "uploaded" && (
           <button
             onClick={(e) => {
@@ -122,19 +122,19 @@ const Blog = ({ blog }: { blog: BlogType }) => {
                   .replaceAll(";", "")}`
               );
             }}
-            className="px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full bg-green-600 text-white font-semibold md:text-lg hover:bg-green-700"
+            className="w-full md:w-auto px-4 md:px-7 py-2 flex items-center justify-center gap-x-2 rounded-full bg-green-600 text-white font-semibold text-sm md:text-lg hover:bg-green-700"
           >
-            <AiOutlineEye className="text-lg md:text-2xl" /> View Blog
+            <AiOutlineEye className="text-base md:text-2xl" /> View Blog
           </button>
         )}
         <button
-          className={getButtonClasses()}
+          className={`w-full md:w-auto px-4 md:px-7 py-2 flex items-center justify-center gap-x-2 rounded-full text-white font-semibold text-sm md:text-lg bg-newBlue hover:bg-newBlue/80`}
           onClick={() => {
             setIsModalOpenUpdate(true);
             setSelectedBlog(blog);
           }}
         >
-          <GoPencil className="md:text-xl" /> Edit Blog
+          <GoPencil className="text-base md:text-xl" /> Edit Blog
         </button>
 
         <button
@@ -142,9 +142,9 @@ const Blog = ({ blog }: { blog: BlogType }) => {
             e.preventDefault();
             handleDelete(blog);
           }}
-          className="px-6 md:px-7 py-2.5 flex items-center gap-x-2.5 rounded-full bg-red-600 text-white font-semibold md:text-lg hover:bg-red-700"
+          className="w-full md:w-auto px-4 md:px-7 py-2 flex items-center justify-center gap-x-2 rounded-full bg-red-600 text-white font-semibold text-sm md:text-lg hover:bg-red-700"
         >
-          <MdOutlineDelete className="text-lg md:text-2xl" /> Delete Blog
+          <MdOutlineDelete className="text-base md:text-2xl" /> Delete Blog
         </button>
       </div>
     </div>

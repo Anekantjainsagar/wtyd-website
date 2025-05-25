@@ -43,12 +43,12 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-blue-50 pt-[18vw] md:pt-[6vw] px-[5vw] md:px-[3vw] flex items-center justify-between">
+    <div className="min-h-screen bg-gradient-to-br from-white to-blue-50 pt-[20vw] md:pt-[6vw] px-[5vw] md:px-[3vw] flex items-center justify-between">
       <Toaster />
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-16 items-center">
         {/* Left Content */}
         <div className="flex flex-col justify-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-newBlue mb-6 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-extrabold text-newBlue mb-2 md:mb-6 leading-tight">
             Ready to Start <br /> Your Project?
           </h1>
           <p className="text-lg md:text-2xl text-gray-700">
@@ -59,7 +59,7 @@ const ContactPage = () => {
 
         {/* Right Form */}
         <div className="flex justify-end">
-          <div className="backdrop-blur-md bg-white/60 border border-white/30 shadow-2xl p-8 md:p-10 rounded-3xl w-full md:w-10/12">
+          <div className="backdrop-blur-md bg-white/60 border border-white/30 shadow-2xl p-5 md:p-10 rounded-3xl w-full md:w-10/12">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1">
