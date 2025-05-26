@@ -34,7 +34,8 @@ const AddBlog = ({ params }) => {
           ?.replaceAll(" ", "-")
           .replaceAll(",", "")
           .replaceAll(":", "")
-          .replaceAll(";", "") === id
+          .replaceAll(";", "")
+          .replaceAll("'", "") === id
     );
 
     if (temp) {

@@ -29,7 +29,8 @@ const BlogPageSingle = () => {
           ?.replaceAll(" ", "-")
           .replaceAll(",", "")
           .replaceAll(":", "")
-          .replaceAll(";", "") === id
+          .replaceAll(";", "")
+          .replaceAll("'", "") === id
     );
 
     if (temp) {
