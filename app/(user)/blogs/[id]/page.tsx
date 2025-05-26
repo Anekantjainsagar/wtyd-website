@@ -30,6 +30,7 @@ const BlogPageSingle = () => {
           .replaceAll(",", "")
           .replaceAll(":", "")
           .replaceAll(";", "")
+          .replaceAll("’", "")
           .replaceAll("'", "") === id
     );
 

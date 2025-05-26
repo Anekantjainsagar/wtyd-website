@@ -33,6 +33,7 @@ const ProductView = () => {
           .replaceAll(",", "")
           .replaceAll(":", "")
           .replaceAll(";", "")
+          .replaceAll("’", "")
           .replaceAll("'", "") === id
     );
 

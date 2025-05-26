@@ -35,6 +35,7 @@ const AddBlog = ({ params }) => {
           .replaceAll(",", "")
           .replaceAll(":", "")
           .replaceAll(";", "")
+          .replaceAll("’", "")
           .replaceAll("'", "") === id
     );
 
@@ -90,6 +91,7 @@ const AddBlog = ({ params }) => {
                   .replaceAll(",", "")
                   .replaceAll(":", "")
                   .replaceAll(";", "")
+                  .replaceAll("’", "")
                   .replaceAll("'", "") === id
                   ? {
                       ...blog,

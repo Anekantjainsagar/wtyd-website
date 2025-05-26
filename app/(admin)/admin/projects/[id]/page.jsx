@@ -35,6 +35,7 @@ export default function UpdateProject({ params }) {
           .replaceAll(",", "")
           .replaceAll(":", "")
           .replaceAll(";", "")
+          .replaceAll("’", "")
           .replaceAll("'", "") === id
     );
     if (temp) {
@@ -87,6 +88,7 @@ export default function UpdateProject({ params }) {
                   .replaceAll(",", "")
                   .replaceAll(":", "")
                   .replaceAll(";", "")
+                  .replaceAll("’", "")
                   .replaceAll("'", "") === id
                   ? {
                       ...p,

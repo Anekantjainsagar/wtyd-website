@@ -164,6 +164,7 @@ const Product = ({ data }) => {
             .replaceAll(",", "")
             .replaceAll(":", "")
             .replaceAll(";", "")
+            .replaceAll("’", "")
             .replaceAll("'", "")}`}
           target="_blank"
         >
