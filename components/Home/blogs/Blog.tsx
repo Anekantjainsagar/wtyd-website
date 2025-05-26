@@ -32,7 +32,8 @@ const Blog = ({ coverImage, title, content }: BlogType) => {
             ?.replaceAll(" ", "-")
             .replaceAll(",", "")
             .replaceAll(":", "")
-            .replaceAll(";", "")}`}
+            .replaceAll(";", "")
+            .replaceAll("'", "")}`}
         >
           <button className="mt-4 w-full md:w-[7vw] bg-newBlue outline-none text-white py-2 rounded-md font-medium text-base">
             View

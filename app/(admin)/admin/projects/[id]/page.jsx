@@ -34,7 +34,8 @@ export default function UpdateProject({ params }) {
           ?.replaceAll(" ", "-")
           .replaceAll(",", "")
           .replaceAll(":", "")
-          .replaceAll(";", "") === id
+          .replaceAll(";", "")
+          .replaceAll("'", "") === id
     );
     if (temp) {
       setImage(temp?.image);
@@ -85,7 +86,8 @@ export default function UpdateProject({ params }) {
                   ?.replaceAll(" ", "-")
                   .replaceAll(",", "")
                   .replaceAll(":", "")
-                  .replaceAll(";", "") === id
+                  .replaceAll(";", "")
+                  .replaceAll("'", "") === id
                   ? {
                       ...p,
                       image: image,

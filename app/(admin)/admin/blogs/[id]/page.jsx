@@ -89,7 +89,8 @@ const AddBlog = ({ params }) => {
                   ?.replaceAll(" ", "-")
                   .replaceAll(",", "")
                   .replaceAll(":", "")
-                  .replaceAll(";", "") === id
+                  .replaceAll(";", "")
+                  .replaceAll("'", "") === id
                   ? {
                       ...blog,
                       coverImage: image,
