@@ -1,17 +1,17 @@
 "use client";
-import { getCookie } from "@/utils/cookies";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useContext, useEffect, useState } from "react";
-import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
-import toast, { Toaster } from "react-hot-toast";
-import API_URI, { ACTUAL_URI } from "@/utils/url";
 import axios from "axios";
 import Link from "next/link";
-import Select from "../../Components/Utils/Select";
-import AdminContext from "@/context/AdminContext";
+import Image from "next/image";
 import { IoReload } from "react-icons/io5";
+import { useRouter } from "next/navigation";
+import { getCookie } from "@/utils/cookies";
+import toast, { Toaster } from "react-hot-toast";
+import API_URI, { ACTUAL_URI } from "@/utils/url";
+import AdminContext from "@/context/AdminContext";
+import Select from "../../Components/Utils/Select";
+import React, { useContext, useEffect, useState } from "react";
 import { useConfirm } from "../../Components/Utils/ConfirmProvier";
+import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 
 const Blogs = () => {
   const [spinning, setSpinning] = useState(false);
@@ -183,7 +183,9 @@ const Product = ({ data }) => {
                 ?.replaceAll(" ", "-")
                 .replaceAll(",", "")
                 .replaceAll(":", "")
-                .replaceAll(";", "")}`
+                .replaceAll(";", "")
+                .replaceAll("’", "")
+                .replaceAll("'", "")}`
             );
           }}
         />
