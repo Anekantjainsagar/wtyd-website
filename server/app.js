@@ -40,8 +40,8 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Body parser
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 
 // Cookie parser
 app.use(cookieParser());
