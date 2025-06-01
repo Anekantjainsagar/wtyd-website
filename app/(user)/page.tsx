@@ -10,6 +10,7 @@ import InsightNumbers, { CounterItem } from "@/sections/Home/InsightNumbers";
 import Feedback from "@/sections/Home/Feedback";
 import Approach from "@/sections/Home/Approach";
 import Blogs from "@/sections/Home/Blogs";
+import Image from "next/image";
 
 const counters: CounterItem[] = [
   { endValue: 4000, label: "Total courses" },
@@ -28,7 +29,8 @@ const coursesData = [
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="relative">
+     
       <LandingSection />
       <CompaniesSection />
       <WhyUs />

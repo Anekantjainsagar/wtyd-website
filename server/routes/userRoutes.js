@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { protect } = require("../middlewares/authMiddleware");
 const Contact = require("../models/Contact");
+const Appointment = require("../models/Appointment");
 const userController = require("../controllers/userController");
 const teamController = require("../controllers/User/teamController");
 const blogController = require("../controllers/User/blogController");
@@ -43,6 +44,65 @@ router.post("/contact", async (req, res) => {
       .json({ success: true, message: "Contact saved successfully" });
   } catch (err) {
     res.status(500).json({ success: false, error: "Server error" });
+  }
+});
+
+router.post("/appointment", async (req, res) => {
+  try {
+    const {
+      fullName,
+      email,
+      phone,
+      dogName,
+      breed,
+      gender,
+      date,
+      reason,
+      agree,
+    } = req.body;
+
+    // Validation check
+    if (
+      !fullName ||
+      !email ||
+      !phone ||
+      !dogName ||
+      !breed ||
+      !gender ||
+      !date ||
+      !reason ||
+      !agree
+    ) {
+      return res.status(400).json({
+        success: false,
+        error: "All fields are required and agreement must be accepted.",
+      });
+    }
+
+    const newAppointment = new Appointment({
+      fullName,
+      email,
+      phone,
+      dogName,
+      breed,
+      gender,
+      date,
+      reason,
+      agree,
+    });
+
+    await newAppointment.save();
+
+    res.status(201).json({
+      success: true,
+      message: "Appointment booked successfully!",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      error: "Server error",
+    });
   }
 });
 
