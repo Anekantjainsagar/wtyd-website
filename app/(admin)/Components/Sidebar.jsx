@@ -9,6 +9,7 @@ import { CiLogout, CiUser } from "react-icons/ci";
 import { usePathname, useRouter } from "next/navigation";
 import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
 import { FaBlogger, FaCircleNotch, FaUsers } from "react-icons/fa";
+import { FaShieldDog } from "react-icons/fa6";
 
 const Sidebar = () => {
   const { logout } = useAuth();
@@ -71,6 +72,11 @@ const Sidebar = () => {
       name: "Queries",
       icon: <FaUserGroup size={20} className="mr-2 pb-0.5" />,
       route: "/admin/partners",
+    },
+    {
+      name: "Vet Appointments",
+      icon: <FaShieldDog size={20} className="mr-2 pb-0.5" />,
+      route: "/admin/appointments",
     },
   ];
 
