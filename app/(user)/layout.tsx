@@ -55,15 +55,15 @@ export default function RootLayout({
                 <Toaster />
                 <Navbar />{" "}
                 <Link href="/vet-appointment">
-                  <div className="z-50 cursor-pointer fixed w-[3vw] h-[32vh] right-0 bottom-8 bg-white rounded-l-xl flex flex-col items-center whitespace-nowrap">
+                  <div className="z-50 cursor-pointer fixed w-[10vw] md:w-[3vw] h-[34vh] md:h-[32vh] right-0 bottom-8 bg-white rounded-l-xl flex flex-col items-center whitespace-nowrap">
                     <Image
                       src={"/assets/doctors.png"}
                       width={1000}
                       height={1000}
                       alt="FREE Vet Appointment"
-                      className="w-[3vw] mb-[6vw] -mt-6"
+                      className="w-[17vw] md:w-[3vw] mb-[24vw] md:mb-[6vw] -mt-6"
                     />
-                    <p className="rotate-90 uppercase text-xl font-semibold">
+                    <p className="rotate-90 uppercase md:text-xl font-semibold">
                       FREE Vet Appointment
                     </p>
                   </div>

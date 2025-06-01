@@ -100,17 +100,17 @@ export default function BookAppointment() {
 
       <div className="min-h-screen bg-white">
         {/* Top Banner */}
-        <div className="bg-newBlue pt-[10vw] px-[4vw] text-white flex flex-col md:flex-row justify-between items-center">
+        <div className="bg-newBlue pt-[20vw] md:pt-[10vw] px-[4vw] text-white flex flex-col md:flex-row justify-between items-center">
           <div>
-            <p className="text-xl">Wtyd - We Tech Your Dreams</p>
-            <h1 className="text-3xl md:text-7xl font-bold mt-1">
+            <p className="md:text-xl">Wtyd - We Tech Your Dreams</p>
+            <h1 className="text-4xl md:text-7xl font-bold mt-1">
               Free Vet Appointment
             </h1>
           </div>
           <img
             src="/assets/doctor.png"
             alt="Vet Doctor"
-            className="w-[40vw] mt-4 md:mt-0"
+            className="w-full md:w-[40vw] mt-4 md:mt-0"
           />
         </div>
 
