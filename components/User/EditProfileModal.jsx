@@ -139,7 +139,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-30 flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl shadow-xl w-[45vw] p-6 relative">
+      <div className="bg-white rounded-2xl shadow-xl w-[90vw] md:w-[45vw] p-6 relative md:h-fit h-[80vh] overflow-y-auto">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-red-500 text-3xl"
@@ -152,8 +152,8 @@ const EditProfileModal = ({ isOpen, onClose }) => {
 
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
-        <div className="flex items-start gap-x-5 w-full justify-between">
-          <div className="w-5/12 mb-4 flex flex-col items-center justify-center">
+        <div className="flex md:flex-row flex-col items-start gap-x-5 w-full justify-between">
+          <div className="md:w-5/12 mb-4 flex flex-col items-center justify-center">
             {image ? (
               <Image
                 width={100}
@@ -174,7 +174,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
               disabled={uploadingImage}
             />
           </div>
-          <div className="space-y-4 w-7/12">
+          <div className="space-y-4 w-full md:w-7/12">
             <InputField
               label="Full Name"
               type="text"

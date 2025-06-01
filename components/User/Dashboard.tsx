@@ -67,14 +67,14 @@ const Dashboard = () => {
             <GoPencil className="md:text-2xl mt-0.5" />
             Edit Profile
           </button>
-          <div className="w-full flex items-end justify-between top-[82%] md:top-[80%] absolute px-6 md:px-10">
+          <div className="w-full flex items-end justify-between bottom-5 md:top-[80%] absolute px-6 md:px-10">
             <div className="text-2xl md:text-3xl">
               <p className="text-newBlue font-medium">{user?.profession}</p>
               <p className="text-gray-600 text-lg md:text-xl w-10/12 mt-0.5">
                 {user?.about}
               </p>
             </div>
-            <div className="flex items-center gap-x-4 md:gap-x-6 md:mr-0 mr-8">
+            <div className="flex items-center gap-x-4 md:gap-x-6 md:mr-0 mr-4">
               {user?.linkedin && (
                 <Link href={user?.linkedin} target="_blank">
                   <Image
@@ -82,7 +82,7 @@ const Dashboard = () => {
                     height={1000}
                     src="/assets/social-icons/linkedin.png"
                     alt="Linkedin Icon"
-                    className="w-[6vw] md:w-[2vw] cursor-pointer"
+                    className="w-[13vw] md:w-[2vw] cursor-pointer"
                   />
                 </Link>
               )}
@@ -93,7 +93,7 @@ const Dashboard = () => {
                     height={1000}
                     src="/assets/social-icons/github.png"
                     alt="Github Icon"
-                    className="w-[6vw] md:w-[2vw] cursor-pointer"
+                    className="w-[13vw] md:w-[2vw] cursor-pointer"
                   />
                 </Link>
               )}

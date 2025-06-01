@@ -13,7 +13,7 @@ const OurTeam = () => {
   const { team } = context;
 
   return (
-    <div className="pt-[24vw] md:pt-[9vw] px-[5vw] md:px-[3vw]">
+    <div className="pt-[24vw] md:pt-[9vw] px-[5vw] md:px-[3vw] md:pb-0 pb-[5vw]">
       <div className="text-center mb-[5vw]">
         <p className="text-newGrey text-lg md:text-xl">Our Team</p>
         <h2 className="text-4xl md:text-6xl font-bold text-newBlue">Members</h2>

@@ -147,7 +147,7 @@ const AddNewBlog = ({ isOpen, onClose }) => {
             }}
           />
 
-          <div className="w-8/12 mt-4 mx-auto">
+          <div className="w-full md:w-8/12 mt-4 mx-auto">
             {image ? (
               <Image
                 width={100}
